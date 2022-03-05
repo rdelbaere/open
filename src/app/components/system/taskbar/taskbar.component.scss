@@ -1,0 +1,13 @@
+.taskbar{
+    width: 100%;
+    height: 40px;
+    background-color: var(--system-color-primary);
+    box-shadow: var(--system-shadow);
+    display: flex;
+    align-items: center;
+    color: white;
+
+    app-taskbar-activity{
+        flex: 1;
+    }
+}

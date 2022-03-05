@@ -1,0 +1,55 @@
+.launcher-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .launcher-trigger{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin: 5px;
+
+        mat-icon{
+            font-size: 1.8rem;
+            pointer-events: none;
+        }
+    }
+
+
+    .launcher{
+        position: absolute;
+        top: calc(100% + 13px); // TODO - Remove tricky position
+        left: 10px;
+        border-radius: 0 10px 10px 10px;
+        box-shadow: var(--system-shadow);
+        width: 400px;
+        height: 400px;
+        background-color: var(--system-color-primary);
+
+        .apps{
+            margin: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+
+            .app{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 0 0 33%;
+                padding: 20px 0;
+                border-radius: 10px;
+                cursor: pointer;
+
+                mat-icon{
+                    font-size: 2rem;
+                }
+
+                &:hover{
+                    background-color: rgba(255, 255, 255, 0.25);
+                }
+            }
+        }
+    }
+}

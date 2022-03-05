@@ -1,0 +1,16 @@
+<div class="launcher-container">
+    <div class="launcher-trigger" #panelTrigger (click)="togglePanel()">
+        <mat-icon>apps</mat-icon>
+    </div>
+
+    <div class="launcher" #panel [hidden]="!panelVisible">
+        <div class="apps">
+
+            <div class="app" *ngFor="let app of installedApps">
+                <mat-icon [ngStyle]="{'color': app.color}" inline="true">{{ app.icon }}</mat-icon>
+                {{ app.name }}
+            </div>
+
+        </div>
+    </div>
+</div>
