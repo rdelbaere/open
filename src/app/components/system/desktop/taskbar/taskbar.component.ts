@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-taskbar',
+  selector: 'app-desktop-taskbar',
   templateUrl: './taskbar.component.html',
   styleUrls: ['./taskbar.component.scss']
 })

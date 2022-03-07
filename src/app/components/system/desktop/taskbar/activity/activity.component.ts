@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-taskbar-activity',
+  selector: 'app-desktop-taskbar-activity',
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss']
 })

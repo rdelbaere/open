@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
-    selector: 'app-taskbar-clock',
+    selector: 'app-desktop-taskbar-clock',
     templateUrl: './clock.component.html',
     styleUrls: ['./clock.component.scss']
 })

@@ -6,11 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SystemComponent } from './components/context/system/system.component';
 import { DesktopComponent } from './components/system/desktop/desktop.component';
-import { TaskbarComponent } from './components/system/taskbar/taskbar.component';
+import { TaskbarComponent } from './components/system/desktop/taskbar/taskbar.component';
 import { MaterialModule } from "./modules/material.module";
-import { ClockComponent } from './components/system/taskbar/clock/clock.component';
-import { ActivityComponent } from './components/system/taskbar/activity/activity.component';
-import { LauncherComponent } from './components/system/taskbar/launcher/launcher.component';
+import { ClockComponent } from './components/system/desktop/taskbar/clock/clock.component';
+import { ActivityComponent } from './components/system/desktop/taskbar/activity/activity.component';
+import { LauncherComponent } from './components/system/desktop/taskbar/launcher/launcher.component';
+import { ShortcutComponent } from './components/system/desktop/shortcut/shortcut.component';
+import { WindowManagerComponent } from './components/system/desktop/window-manager/window-manager.component';
+import { WindowComponent } from './components/system/window/window.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +23,10 @@ import { LauncherComponent } from './components/system/taskbar/launcher/launcher
         TaskbarComponent,
         ClockComponent,
         ActivityComponent,
-        LauncherComponent
+        LauncherComponent,
+        ShortcutComponent,
+        WindowManagerComponent,
+        WindowComponent
     ],
     imports: [
         BrowserModule,

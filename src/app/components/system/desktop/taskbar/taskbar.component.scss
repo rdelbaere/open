@@ -5,9 +5,9 @@
     box-shadow: var(--system-shadow);
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--system-color-light);
 
-    app-taskbar-activity{
+    app-desktop-taskbar-activity{
         flex: 1;
     }
 }

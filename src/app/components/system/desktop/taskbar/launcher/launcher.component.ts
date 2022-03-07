@@ -1,7 +1,8 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import {App} from "../../../../../model/app";
 
 @Component({
-  selector: 'app-taskbar-launcher',
+  selector: 'app-desktop-taskbar-launcher',
   templateUrl: './launcher.component.html',
   styleUrls: ['./launcher.component.scss']
 })
@@ -11,7 +12,7 @@ export class LauncherComponent {
     panelVisible: boolean = false;
 
     // TODO - Dynamize apps list
-    installedApps: Array<any> = [
+    installedApps: Array<App> = [
         {
             name: "Navigateur",
             icon: "public",
@@ -40,10 +41,6 @@ export class LauncherComponent {
 
     setupPanelAutoclose(){
         this.renderer.listen('window', 'click', e => {
-            console.log(e.target);
-
-            console.log(this.panelTriggerElement.nativeElement);
-            console.log(this.panelElement.nativeElement);
             if(e.target != this.panelElement.nativeElement && e.target != this.panelTriggerElement.nativeElement){
                 this.closePanel();
             }

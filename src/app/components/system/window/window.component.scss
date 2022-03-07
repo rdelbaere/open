@@ -1,0 +1,49 @@
+.window{
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--system-color-primary);
+    border-top: 2px solid var(--system-color-secondary);
+
+    &-header{
+        display: flex;
+        background-color: var(--system-color-primary);
+        color: var(--system-color-light);
+
+        &__name{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+            cursor: move;
+            padding: 5px;
+
+            mat-icon{
+                font-size: 1.2rem;
+            }
+        }
+
+        &__actions{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            mat-icon{
+                padding: 5px;
+                font-size: 1.2rem;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: var(--system-overlay);
+                }
+            }
+        }
+    }
+
+    &-body{
+        background-color: var(--system-color-light);
+        flex: 1;
+    }
+}
