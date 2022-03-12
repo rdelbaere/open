@@ -1,10 +1,10 @@
 <div class="window" #window [ngStyle]="buildStyle()"
      cdkDrag cdkDragBoundary=".desktop-workspace"
-     (cdkDragStarted)="drag()" (cdkDragEnded)="move($event)">
+     (cdkDragStarted)="drag($event)" (cdkDragEnded)="move($event)">
 
     <div class="window-header">
         <div class="window-header__name" (dblclick)="maximize()" cdkDragHandle>
-            <mat-icon [inline]="true">settings</mat-icon> Paramtères
+            <mat-icon [inline]="true">settings</mat-icon> Paramètres
         </div>
         <div class="window-header__actions">
             <mat-icon [inline]="true">minimize</mat-icon>

@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Position } from "../../../model/position";
 import { Size } from "../../../model/size";
-import { CdkDragEnd } from "@angular/cdk/drag-drop";
+import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
 
 @Component({
     selector: 'app-window',
@@ -27,8 +27,11 @@ export class WindowComponent{
         this.maximized = !this.maximized;
     }
 
-    drag(){ // TODO - Fix bug for drag with maximized
-        this.maximized = false;
+    drag(e: CdkDragStart){
+        if(this.maximized){
+            this.attatchToCursorForDragging(e.source._dragRef);
+            this.maximized = false;
+        }
     }
 
     move(event: CdkDragEnd){
@@ -55,5 +58,17 @@ export class WindowComponent{
             width: this.size.width + 'px',
             height: this.size.height + 'px',
         };
+    }
+
+    attatchToCursorForDragging(dragRef: DragRef){
+        const mousePosition = dragRef['_lastKnownPointerPosition'];
+        const relativePosition = mousePosition.x * 100 / this.window.nativeElement.offsetWidth;
+        const absolutePosition = relativePosition * this.size.width / 100;
+        this.position.x = mousePosition.x - absolutePosition;
+        this.position.y = 0;
+
+        // Fix boundary rect
+        dragRef['_boundaryRect'].left = -this.position.x;
+        dragRef['_boundaryRect'].right = this.window.nativeElement.offsetWidth - this.position.x;
     }
 }
