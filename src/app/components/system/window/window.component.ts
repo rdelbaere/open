@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Position } from "../../../model/position";
-import { Size } from "../../../model/size";
+import { Position } from "../../../interfaces/ui/position";
+import { Size } from "../../../interfaces/ui/size";
 import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
 
 @Component({

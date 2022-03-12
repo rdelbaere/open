@@ -1,5 +1,5 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import {App} from "../../../../../model/app";
+import { App } from "../../../../../interfaces/system/app";
 
 @Component({
   selector: 'app-desktop-taskbar-launcher',
