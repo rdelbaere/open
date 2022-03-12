@@ -1,6 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { App } from "../../../../../interfaces/system/app";
-import { AppService } from "../../../../../services/system/app.service";
+import { AppStore } from "../../../../../services/system/app.store";
 
 @Component({
   selector: 'app-desktop-taskbar-launcher',
@@ -14,10 +14,10 @@ export class LauncherComponent {
 
     installedApps: App[];
 
-    constructor(private renderer: Renderer2, private appService: AppService){
+    constructor(private renderer: Renderer2, private appStore: AppStore){
         this.setupPanelAutoclose();
 
-        this.appService.getInstalled().subscribe(installedApps => {
+        this.appStore.getInstalled().subscribe(installedApps => {
             this.installedApps = installedApps;
         });
     }

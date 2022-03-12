@@ -6,7 +6,7 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class AppService{
+export class AppStore{
     private subject: BehaviorSubject<App[]> = new BehaviorSubject<App[]>([]);
     private data: App[] = [
         {
