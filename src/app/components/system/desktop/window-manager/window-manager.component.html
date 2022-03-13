@@ -1,1 +1,2 @@
-<app-window *ngFor="let process of tasks" [process]="process"></app-window>
+<app-window *ngFor="let process of tasks" [process]="process"
+    (mousedown)="focus(process)"></app-window>

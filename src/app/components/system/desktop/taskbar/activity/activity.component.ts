@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskManager } from "../../../../../services/system/task.manager";
-import { Process } from "../../../../../interfaces/system/process";
+import { Process, ProcessEventType } from "../../../../../interfaces/system/process";
 
 @Component({
     selector: 'app-desktop-taskbar-activity',
@@ -16,5 +16,9 @@ export class ActivityComponent {
         });
     }
 
-
+    focus(process: Process){
+        this.taskManager.dispatch(ProcessEventType.focus, process, {
+            withMinimize: true,
+        });
+    }
 }

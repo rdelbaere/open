@@ -10,7 +10,7 @@
             {{ process.activity.name }}
         </div>
         <div class="window-header__actions">
-            <mat-icon [inline]="true">minimize</mat-icon>
+            <mat-icon [inline]="true" (click)="minimize()">minimize</mat-icon>
             <mat-icon [inline]="true" (click)="maximize()">open_in_full</mat-icon>
             <mat-icon [inline]="true" (click)="close()">close</mat-icon>
         </div>
