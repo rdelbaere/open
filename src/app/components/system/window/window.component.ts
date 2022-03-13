@@ -1,7 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Position } from "../../../interfaces/ui/position";
 import { Size } from "../../../interfaces/ui/size";
 import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
+import { Process } from "../../../interfaces/system/process";
+import { TaskManager } from "../../../services/system/task.manager";
 
 @Component({
     selector: 'app-window',
@@ -10,6 +12,7 @@ import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
 })
 export class WindowComponent{
     @ViewChild('window') window: ElementRef;
+    @Input('process') process: Process;
 
     position: Position = {
         x: 20,
@@ -21,15 +24,19 @@ export class WindowComponent{
     }
     maximized: boolean = false;
 
-    constructor(){}
+    constructor(private taskManager: TaskManager){}
 
     maximize(){
         this.maximized = !this.maximized;
     }
 
+    close(){
+        this.taskManager.kill(this.process);
+    }
+
     drag(e: CdkDragStart){
         if(this.maximized){
-            this.attatchToCursorForDragging(e.source._dragRef);
+            this.attachToCursorForDragging(e.source._dragRef);
             this.maximized = false;
         }
     }
@@ -60,7 +67,7 @@ export class WindowComponent{
         };
     }
 
-    attatchToCursorForDragging(dragRef: DragRef){
+    attachToCursorForDragging(dragRef: DragRef){
         const mousePosition = dragRef['_lastKnownPointerPosition'];
         const relativePosition = mousePosition.x * 100 / this.window.nativeElement.offsetWidth;
         const absolutePosition = relativePosition * this.size.width / 100;

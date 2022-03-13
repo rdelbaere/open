@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { App } from "../../../../../interfaces/system/app";
 import { AppStore } from "../../../../../services/system/app.store";
+import {TaskManager} from "../../../../../services/system/task.manager";
 
 @Component({
   selector: 'app-desktop-taskbar-launcher',
@@ -14,7 +15,11 @@ export class LauncherComponent {
 
     installedApps: App[];
 
-    constructor(private renderer: Renderer2, private appStore: AppStore){
+    constructor(
+        private renderer: Renderer2,
+        private appStore: AppStore,
+        private taskManager: TaskManager
+    ){
         this.setupPanelAutoclose();
 
         this.appStore.getInstalled().subscribe(installedApps => {
@@ -28,6 +33,10 @@ export class LauncherComponent {
                 this.closePanel();
             }
         });
+    }
+
+    launch(app: App){
+        this.taskManager.run(app);
     }
 
     togglePanel(){

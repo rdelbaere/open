@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
 })
 export class AppStore{
     private subject: BehaviorSubject<App[]> = new BehaviorSubject<App[]>([]);
-    private data: App[] = [
+    private apps: App[] = [
         {
             name: "Navigateur",
             icon: "public",
@@ -41,7 +41,7 @@ export class AppStore{
 
     initialize(){
         // TODO - Get data from backend
-        this.subject.next(this.data);
+        this.subject.next(this.apps);
     }
 
     getAll(): Observable<App[]>{

@@ -4,12 +4,15 @@
 
     <div class="window-header">
         <div class="window-header__name" (dblclick)="maximize()" cdkDragHandle>
-            <mat-icon [inline]="true">settings</mat-icon> Paramètres
+            <mat-icon [inline]="true" [ngStyle]="{'color': process.activity.color}">
+                {{ process.activity.icon }}
+            </mat-icon>
+            {{ process.activity.name }}
         </div>
         <div class="window-header__actions">
             <mat-icon [inline]="true">minimize</mat-icon>
             <mat-icon [inline]="true" (click)="maximize()">open_in_full</mat-icon>
-            <mat-icon [inline]="true">close</mat-icon>
+            <mat-icon [inline]="true" (click)="close()">close</mat-icon>
         </div>
     </div>
 
