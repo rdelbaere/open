@@ -8,10 +8,12 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        margin: 5px;
+        margin: 5px 10px;
 
         mat-icon{
             font-size: 1.8rem;
+            width: auto;
+            height: auto;
             pointer-events: none;
         }
     }
@@ -46,10 +48,11 @@
 
                 mat-icon{
                     font-size: 2rem;
+                    pointer-events: none;
                 }
 
                 &:hover{
-                    background-color: rgba(255, 255, 255, 0.25);
+                    background-color: var(--system-overlay);
                 }
             }
         }

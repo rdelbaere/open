@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { TaskManager } from "../../../../../services/system/task.manager";
+import { Process } from "../../../../../interfaces/system/process";
 
 @Component({
     selector: 'app-desktop-taskbar-activity',
     templateUrl: './activity.component.html',
     styleUrls: ['./activity.component.scss']
 })
-export class ActivityComponent implements OnInit {
+export class ActivityComponent {
+    tasks: Process[];
 
-    constructor() { }
-
-    ngOnInit(): void {
+    constructor(private taskManager: TaskManager){
+        this.taskManager.getAll().subscribe(tasks => {
+            this.tasks = tasks;
+        });
     }
+
 
 }
