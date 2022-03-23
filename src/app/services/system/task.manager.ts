@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { filter } from "rxjs/operators";
 import { Process, ProcessEvent, ProcessEventType } from "../../interfaces/system/process";
 import { App } from "../../interfaces/system/app";
-import { DefaultWindow, Window } from "../../interfaces/ui/window";
+import { DefaultWindow } from "../../interfaces/ui/window";
 
 @Injectable({
   providedIn: 'root'
