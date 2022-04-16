@@ -11,7 +11,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
     constructor(){}
 
-    ngOnInit(): void{
+    ngOnInit(): void {
         this.setupTimer();
     }
 
@@ -19,13 +19,13 @@ export class ClockComponent implements OnInit, OnDestroy {
         this.stopTimer();
     }
 
-    setupTimer(){
+    setupTimer() {
         this.timer = setInterval(() => {
             this.now = new Date();
         }, 1000);
     }
 
-    stopTimer(){
+    stopTimer() {
         clearInterval(this.timer);
     }
 }
