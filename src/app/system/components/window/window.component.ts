@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
-import { Process, ProcessEventType } from "../../../interfaces/system/process";
-import { TaskManager } from "../../../services/system/task.manager";
-import { Window } from "../../../interfaces/ui/window";
+import { Process, ProcessEventType } from "../../interfaces/core/process";
+import { TaskManager } from "../../services/task.manager";
+import { Window } from "../../interfaces/ui/window";
 
 @Component({
     selector: 'app-window',

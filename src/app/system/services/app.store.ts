@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { App } from "../../interfaces/system/app";
+import { App } from "../interfaces/core/app";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 

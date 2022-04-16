@@ -1,9 +1,9 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
 import { filter } from "rxjs/operators";
-import { Process, ProcessEvent, ProcessEventType } from "../../interfaces/system/process";
-import { App } from "../../interfaces/system/app";
-import { DefaultWindow } from "../../interfaces/ui/window";
+import { Process, ProcessEvent, ProcessEventType } from "../interfaces/core/process";
+import { App } from "../interfaces/core/app";
+import { DefaultWindow } from "../interfaces/ui/window";
 
 @Injectable({
   providedIn: 'root'

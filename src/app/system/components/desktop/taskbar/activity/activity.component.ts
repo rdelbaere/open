@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TaskManager } from "../../../../../services/system/task.manager";
-import { Process, ProcessEventType } from "../../../../../interfaces/system/process";
+import { TaskManager } from "../../../../services/task.manager";
+import { Process, ProcessEventType } from "../../../../interfaces/core/process";
 
 @Component({
     selector: 'app-desktop-taskbar-activity',

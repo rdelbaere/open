@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SystemComponent} from "./components/context/system/system.component";
+import { SystemComponent } from "./system/views/system/system.component";
 
 const routes: Routes = [
-  {path: '', component: SystemComponent},
+    { path: '', component: SystemComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { App } from "../../../../../interfaces/system/app";
-import { AppStore } from "../../../../../services/system/app.store";
-import {TaskManager} from "../../../../../services/system/task.manager";
+import { App } from "../../../../interfaces/core/app";
+import { AppStore } from "../../../../services/app.store";
+import {TaskManager} from "../../../../services/task.manager";
 
 @Component({
   selector: 'app-desktop-taskbar-launcher',

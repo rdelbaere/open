@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskManager } from "../../../../services/system/task.manager";
-import { Process, ProcessEvent, ProcessEventType } from "../../../../interfaces/system/process";
+import { TaskManager } from "../../../services/task.manager";
+import { Process, ProcessEvent, ProcessEventType } from "../../../interfaces/core/process";
 
 @Component({
-    selector: 'app-desktop-window-manager',
-    templateUrl: './window-manager.component.html',
-    styleUrls: ['./window-manager.component.scss']
+    selector: 'app-desktop-window-container',
+    templateUrl: './window-container.component.html',
+    styleUrls: ['./window-container.component.scss']
 })
-export class WindowManagerComponent implements OnInit{
+export class WindowContainerComponent implements OnInit{
     tasks: Process[] = [];
 
     constructor(private taskManager: TaskManager){
@@ -26,7 +26,7 @@ export class WindowManagerComponent implements OnInit{
         });
 
         this.taskManager.listen(ProcessEventType.minimized).subscribe(event => {
-           this.onMinimized(event);
+            this.onMinimized(event);
         });
     }
 
