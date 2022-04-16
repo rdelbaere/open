@@ -1,11 +1,13 @@
 import { Position } from "./position";
 import { Size } from "./size";
+import { Process } from "../core/process";
 
 export interface Window{
     position: Position;
     size: Size;
     maximized: boolean;
     minimized: boolean;
+    process: Process;
 }
 
 export class DefaultWindow implements Window{
@@ -19,4 +21,6 @@ export class DefaultWindow implements Window{
     };
     maximized = false;
     minimized = false;
+
+    constructor(public process: Process){}
 }

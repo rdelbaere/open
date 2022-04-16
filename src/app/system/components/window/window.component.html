@@ -4,10 +4,10 @@
 
     <div class="window-header">
         <div class="window-header__name" (dblclick)="maximize()" cdkDragHandle>
-            <mat-icon [inline]="true" [ngStyle]="{'color': process.activity.color}">
-                {{ process.activity.icon }}
+            <mat-icon [inline]="true" [ngStyle]="{'color': win.process.activity.color}">
+                {{ win.process.activity.icon }}
             </mat-icon>
-            {{ process.activity.name }}
+            {{ win.process.activity.name }}
         </div>
         <div class="window-header__actions">
             <mat-icon [inline]="true" (click)="minimize()">minimize</mat-icon>

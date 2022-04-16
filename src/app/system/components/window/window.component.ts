@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
-import { Process, ProcessEventType } from "../../interfaces/core/process";
-import { TaskManager } from "../../services/task.manager";
 import { Window } from "../../interfaces/ui/window";
+import { WindowManager } from "../../services/window.manager";
+import { TaskManager } from "../../services/task.manager";
 
 @Component({
     selector: 'app-window',
@@ -11,61 +11,52 @@ import { Window } from "../../interfaces/ui/window";
 })
 export class WindowComponent implements OnInit{
     @ViewChild('window') element: ElementRef;
-    @Input('process') process: Process;
-    window: Window;
+    @Input('window') win: Window;
 
-    constructor(private taskManager: TaskManager){}
+    constructor(
+        private taskManager: TaskManager,
+        private windowManager: WindowManager
+    ){}
 
-    ngOnInit(){
-        this.window = this.process.window;
-        this.setupEvents();
-    }
-
-    setupEvents(){
-        this.taskManager.listen(ProcessEventType.minimize, this.process).subscribe(() => {
-            this.minimize();
-        });
-    }
+    ngOnInit(){}
 
     maximize(){
-        this.window.maximized = !this.window.maximized;
+        this.windowManager.maximize(this.win);
     }
 
     minimize(){
-        this.window.minimized = !this.window.minimized;
-
-        if(this.window.minimized){
-            this.taskManager.dispatch(ProcessEventType.minimized, this.process);
-        }
+        this.windowManager.minimize(this.win);
     }
 
     close(){
-        this.taskManager.kill(this.process);
+        this.taskManager.kill(this.win.process);
     }
 
     drag(e: CdkDragStart){
-        if(this.window.maximized){
+        if(this.win.maximized){
             this.attachToCursorForDragging(e.source._dragRef);
-            this.window.maximized = false;
+            this.windowManager.demaximize(this.win);
         }
     }
 
     move(event: CdkDragEnd){
         const movedTo = event.source.getFreeDragPosition();
-        this.window.position.x = this.window.position.x + movedTo.x;
-        this.window.position.y = this.window.position.y + movedTo.y;
+        this.windowManager.upodatePostion(this.win, {
+            x: this.win.position.x + movedTo.x,
+            y: this.win.position.y + movedTo.y,
+        });
 
         event.source.reset();
     }
 
     buildStyle(){
-        if(this.window.minimized){
+        if(this.win.minimized){
             return {
                 display: 'none',
             };
         }
 
-        if(this.window.maximized){
+        if(this.win.maximized){
             return {
                 top: 0,
                 left: 0,
@@ -75,22 +66,24 @@ export class WindowComponent implements OnInit{
         }
 
         return {
-            top: this.window.position.y + 'px',
-            left: this.window.position.x + 'px',
-            width: this.window.size.width + 'px',
-            height: this.window.size.height + 'px',
+            top: this.win.position.y + 'px',
+            left: this.win.position.x + 'px',
+            width: this.win.size.width + 'px',
+            height: this.win.size.height + 'px',
         };
     }
 
     attachToCursorForDragging(dragRef: DragRef){
         const mousePosition = dragRef['_lastKnownPointerPosition'];
         const relativePosition = mousePosition.x * 100 / this.element.nativeElement.offsetWidth;
-        const absolutePosition = relativePosition * this.window.size.width / 100;
-        this.window.position.x = mousePosition.x - absolutePosition;
-        this.window.position.y = 0;
+        const absolutePosition = relativePosition * this.win.size.width / 100;
+        this.windowManager.upodatePostion(this.win, {
+            x: mousePosition.x - absolutePosition,
+            y: 0,
+        });
 
         // Fix boundary rect
-        dragRef['_boundaryRect'].left = -this.window.position.x;
-        dragRef['_boundaryRect'].right = this.element.nativeElement.offsetWidth - this.window.position.x;
+        dragRef['_boundaryRect'].left = -this.win.position.x;
+        dragRef['_boundaryRect'].right = this.element.nativeElement.offsetWidth - this.win.position.x;
     }
 }

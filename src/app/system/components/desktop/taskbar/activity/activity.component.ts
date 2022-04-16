@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TaskManager } from "../../../../services/task.manager";
-import { Process, ProcessEventType } from "../../../../interfaces/core/process";
+import { Window } from "../../../../interfaces/ui/window";
+import { WindowManager } from "../../../../services/window.manager";
 
 @Component({
     selector: 'app-desktop-taskbar-activity',
@@ -8,17 +8,26 @@ import { Process, ProcessEventType } from "../../../../interfaces/core/process";
     styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent {
-    tasks: Process[];
+    windows: Window[];
 
-    constructor(private taskManager: TaskManager){
-        this.taskManager.getAll().subscribe(tasks => {
-            this.tasks = tasks;
+    constructor(private windowManager: WindowManager){
+        this.windowManager.getAll().subscribe(windows => {
+            this.windows = [...windows];
+            this.windows.sort(this.order);
         });
     }
 
-    focus(process: Process){
-        this.taskManager.dispatch(ProcessEventType.focus, process, {
-            withMinimize: true,
-        });
+    focus(window: Window){
+        this.windowManager.focus(window, true);
+    }
+
+    order(a: Window, b: Window){
+        if(a.process.createdAt < b.process.createdAt){
+            return -1;
+        }else if(a.process.createdAt === b.process.createdAt){
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }
