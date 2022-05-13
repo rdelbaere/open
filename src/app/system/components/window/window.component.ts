@@ -1,15 +1,16 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { CdkDragEnd, CdkDragStart, DragRef } from "@angular/cdk/drag-drop";
 import { Window } from "../../interfaces/ui/window";
 import { WindowManager } from "../../services/window.manager";
 import { TaskManager } from "../../services/task.manager";
+import { Size } from "../../interfaces/ui/size";
 
 @Component({
     selector: 'app-window',
     templateUrl: './window.component.html',
     styleUrls: ['./window.component.scss']
 })
-export class WindowComponent implements OnInit{
+export class WindowComponent{
     @ViewChild('window') element: ElementRef;
     @Input('window') win: Window;
 
@@ -17,8 +18,6 @@ export class WindowComponent implements OnInit{
         private taskManager: TaskManager,
         private windowManager: WindowManager
     ){}
-
-    ngOnInit(){}
 
     maximize(){
         this.windowManager.maximize(this.win);
@@ -85,5 +84,9 @@ export class WindowComponent implements OnInit{
         // Fix boundary rect
         dragRef['_boundaryRect'].left = -this.win.position.x;
         dragRef['_boundaryRect'].right = this.element.nativeElement.offsetWidth - this.win.position.x;
+    }
+
+    resize($event: Size) {
+        this.windowManager.updateSize(this.win, $event);
     }
 }

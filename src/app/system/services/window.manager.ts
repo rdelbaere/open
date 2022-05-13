@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { DefaultWindow, Window } from "../interfaces/ui/window";
 import { Process } from "../interfaces/core/process";
 import { Position } from "../interfaces/ui/position";
+import { Size } from "../interfaces/ui/size";
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +77,11 @@ export class WindowManager{
 
     upodatePostion(window: Window, position: Position){
         window.position = position;
+        this.dispatch();
+    }
+
+    updateSize(window: Window, size: Size){
+        window.size = size;
         this.dispatch();
     }
 

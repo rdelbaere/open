@@ -1,0 +1,11 @@
+.window-handle{
+    cursor: nwse-resize;
+
+    mat-icon{
+        vertical-align: bottom;
+        color: var(--system-color-primary);
+        opacity: 0.8;
+
+        transform: rotate(45deg) translate(3px, 3px);
+    }
+}

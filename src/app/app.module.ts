@@ -8,6 +8,7 @@ import { KernelModule } from "./system/modules/kernel.module";
 
 import { registerLocaleData } from "@angular/common";
 import localeFr from '@angular/common/locales/fr';
+
 registerLocaleData(localeFr);
 
 @NgModule({

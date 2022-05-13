@@ -12,6 +12,7 @@ import { LauncherComponent } from "../components/desktop/taskbar/launcher/launch
 import { ShortcutComponent } from "../components/desktop/shortcut/shortcut.component";
 import { WindowComponent } from "../components/window/window.component";
 import { MaterialModule } from "./material.module";
+import { WindowHandleComponent } from "../components/window/window-handle/window-handle.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MaterialModule } from "./material.module";
         LauncherComponent,
         ShortcutComponent,
         WindowComponent,
+        WindowHandleComponent,
     ],
     imports: [
         CommonModule,

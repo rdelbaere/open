@@ -46,4 +46,10 @@
         background-color: var(--system-color-light);
         flex: 1;
     }
+
+    app-window-handle{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }
