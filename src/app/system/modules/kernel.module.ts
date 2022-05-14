@@ -10,10 +10,12 @@ import { ClockComponent } from "../components/desktop/taskbar/clock/clock.compon
 import { ActivityComponent } from "../components/desktop/taskbar/activity/activity.component";
 import { LauncherComponent } from "../components/desktop/taskbar/launcher/launcher.component";
 import { ShortcutComponent } from "../components/desktop/shortcut/shortcut.component";
-import { WindowComponent } from "../components/window/window.component";
-import { MaterialModule } from "./material.module";
-import { WindowHandleComponent } from "../components/window/window-handle/window-handle.component";
 
+import { WindowComponent } from "../components/window/window.component";
+import { WindowHandleComponent } from "../components/window/window-handle/window-handle.component";
+import { WindowRuntimeComponent } from '../components/window/window-runtime/window-runtime.component';
+
+import { MaterialModule } from "./material.module";
 
 @NgModule({
     declarations: [
@@ -27,6 +29,7 @@ import { WindowHandleComponent } from "../components/window/window-handle/window
         ShortcutComponent,
         WindowComponent,
         WindowHandleComponent,
+        WindowRuntimeComponent,
     ],
     imports: [
         CommonModule,

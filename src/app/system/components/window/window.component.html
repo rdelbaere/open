@@ -16,9 +16,7 @@
         </div>
     </div>
 
-    <div class="window-body">
-
-    </div>
+    <app-window-runtime class="window-body" [window]="win"></app-window-runtime>
 
     <app-window-handle [window]="win" (resized)="resize($event)"></app-window-handle>
 </div>
