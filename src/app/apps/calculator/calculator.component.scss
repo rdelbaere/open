@@ -9,9 +9,14 @@
         padding: 10px;
         height: calc(2rem + 10px);
         margin: 2px;
-        text-align: right;
+
         background-color: #7f8c8d;
         color: var(--system-color-light);
+
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &-pad{
