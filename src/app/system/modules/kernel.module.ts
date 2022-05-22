@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { LoginComponent } from "../views/login/login.component";
 import { SystemComponent } from "../views/system/system.component";
 
 import { DesktopComponent } from "../components/desktop/desktop.component";
@@ -19,6 +20,7 @@ import { MaterialModule } from "./material.module";
 
 @NgModule({
     declarations: [
+        LoginComponent,
         SystemComponent,
         DesktopComponent,
         WindowContainerComponent,
