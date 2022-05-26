@@ -17,6 +17,8 @@ import { WindowHandleComponent } from "../components/window/window-handle/window
 import { WindowRuntimeComponent } from '../components/window/window-runtime/window-runtime.component';
 
 import { MaterialModule } from "./material.module";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -35,7 +37,9 @@ import { MaterialModule } from "./material.module";
     ],
     imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        HttpClientModule,
+        ReactiveFormsModule
     ]
 })
 export class KernelModule { }
