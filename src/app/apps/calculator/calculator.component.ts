@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent{
-    operation: string = '';
+    operation: string = "";
     isCompleted: boolean = false;
 
     validChars: RegExp = /^[0-9.+\-*/ ]+$/;
@@ -29,7 +29,7 @@ export class CalculatorComponent{
             this.reset();
         }
 
-        let output = '';
+        let output;
         if(char === "=") {
             output = ' ' + char + ' ' + this.calculate();
         }else if(char.match(this.validOperators)){
@@ -69,5 +69,4 @@ export class CalculatorComponent{
         this.isCompleted = false;
         this.operation = '';
     }
-
 }
