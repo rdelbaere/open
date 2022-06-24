@@ -4,7 +4,7 @@
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field color="accent">
             <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email" autocomplete="off">
+            <input type="email" matInput formControlName="username" autocomplete="off">
         </mat-form-field>
 
         <mat-form-field color="accent">
@@ -12,7 +12,7 @@
             <input type="password" matInput formControlName="password">
         </mat-form-field>
 
-        <button mat-flat-button color="accent">
+        <button mat-flat-button color="accent" [class.loader]="loading" [disabled]="loading">
             Connexion
         </button>
     </form>
