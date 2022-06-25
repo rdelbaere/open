@@ -1,0 +1,4 @@
+<div class="notification-live-feed">
+    <app-notification-entry *ngFor="let notification of feed"
+        [notification]="notification" (click)="clear(notification)"></app-notification-entry>
+</div>

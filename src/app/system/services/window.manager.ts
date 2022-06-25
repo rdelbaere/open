@@ -6,7 +6,7 @@ import { Position } from "../interfaces/ui/position";
 import { Size } from "../interfaces/ui/size";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class WindowManager{
     private subject: BehaviorSubject<Window[]> = new BehaviorSubject<Window[]>([]);

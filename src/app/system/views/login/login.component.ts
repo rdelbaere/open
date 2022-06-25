@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from "@angular/forms";
 import { AccountManager } from "../../services/account.manager";
+import { NotificationCenter } from "../../services/notification.center";
+import { NotificationType } from "../../interfaces/core/notification";
 
 @Component({
     selector: 'app-login',
@@ -15,17 +17,29 @@ export class LoginComponent {
     });
     loading: boolean = false;
 
-    constructor(private router: Router, private accountManager: AccountManager){}
+    constructor(
+        private router: Router,
+        private accountManager: AccountManager,
+        private notificationCenter: NotificationCenter
+    ){}
 
     login(){
         this.loading = true;
         this.accountManager.authenticate(this.loginForm.value)
             .subscribe(() => {
                 this.loading = false;
-                this.router.navigate(['/']);
+                this.router.navigate(['/']).then(() => {
+                    this.notificationCenter.dispatch({
+                        type: NotificationType.success,
+                        message: "Session ouverte",
+                    });
+                });
             }, err => {
                 this.loading = false;
-                console.log(err); // TODO - Manage errors
+                this.notificationCenter.dispatch({
+                    type: NotificationType.error,
+                    message: err.error.message,
+                });
             });
     }
 }

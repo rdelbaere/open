@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { BackendResponse } from "../interfaces/backend/backend-response";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class BackendService {
     config: any = environment.backend;

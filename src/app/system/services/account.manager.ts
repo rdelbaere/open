@@ -5,7 +5,7 @@ import { BackendService } from "./backend.service";
 import { Credentials } from "../interfaces/backend/credentials";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AccountManager {
     private token: string;

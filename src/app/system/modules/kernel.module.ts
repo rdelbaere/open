@@ -19,6 +19,8 @@ import { WindowRuntimeComponent } from '../components/window/window-runtime/wind
 import { MaterialModule } from "./material.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { LiveFeedComponent } from "../components/notification/live-feed/live-feed.component";
+import { NotificationComponent } from "../components/notification/notification/notification.component";
 
 @NgModule({
     declarations: [
@@ -34,6 +36,8 @@ import { HttpClientModule } from "@angular/common/http";
         WindowComponent,
         WindowHandleComponent,
         WindowRuntimeComponent,
+        LiveFeedComponent,
+        NotificationComponent,
     ],
     imports: [
         CommonModule,

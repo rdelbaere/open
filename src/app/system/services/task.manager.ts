@@ -5,7 +5,7 @@ import { App } from "../interfaces/core/app";
 import { WindowManager } from "./window.manager";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class TaskManager{
     private subject: BehaviorSubject<Process[]> = new BehaviorSubject<Process[]>([]);
