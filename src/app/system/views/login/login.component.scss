@@ -16,6 +16,10 @@
         color: var(--system-color-light);
         text-align: center;
         font-size: 3rem;
+
+        &:after{
+            @include reflect('Open');
+        }
     }
 
     .login-form{
@@ -25,5 +29,9 @@
         flex-direction: column;
         gap: 10px;
         padding: 20px;
+
+        input{
+            color: var(--system-color-light);
+        }
     }
 }

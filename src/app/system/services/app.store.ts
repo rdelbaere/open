@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AppStore{
     private subject: BehaviorSubject<App[]> = new BehaviorSubject<App[]>([]);

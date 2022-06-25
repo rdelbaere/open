@@ -1,19 +1,21 @@
 <div class="login-container">
     <h1>Open</h1>
 
-    <form class="login-form">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <mat-form-field color="accent">
             <mat-label>Email</mat-label>
-            <input type="email" matInput autocomplete="off">
+            <input type="email" matInput formControlName="username" autocomplete="off">
         </mat-form-field>
 
         <mat-form-field color="accent">
             <mat-label>Mot de passe</mat-label>
-            <input type="password" matInput>
+            <input type="password" matInput formControlName="password">
         </mat-form-field>
 
-        <button mat-flat-button color="accent">
+        <button mat-flat-button color="accent" [class.loader]="loading" [disabled]="loading">
             Connexion
         </button>
     </form>
 </div>
+
+<app-notification-live-feed></app-notification-live-feed>

@@ -17,6 +17,10 @@ import { WindowHandleComponent } from "../components/window/window-handle/window
 import { WindowRuntimeComponent } from '../components/window/window-runtime/window-runtime.component';
 
 import { MaterialModule } from "./material.module";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { LiveFeedComponent } from "../components/notification/live-feed/live-feed.component";
+import { NotificationComponent } from "../components/notification/notification/notification.component";
 
 @NgModule({
     declarations: [
@@ -32,10 +36,14 @@ import { MaterialModule } from "./material.module";
         WindowComponent,
         WindowHandleComponent,
         WindowRuntimeComponent,
+        LiveFeedComponent,
+        NotificationComponent,
     ],
     imports: [
         CommonModule,
-        MaterialModule
+        MaterialModule,
+        HttpClientModule,
+        ReactiveFormsModule
     ]
 })
 export class KernelModule { }

@@ -2,3 +2,12 @@
     font-family: 'Gruppo', cursive;
     letter-spacing: 8px;
 }
+
+@mixin reflect($content){
+    content: $content;
+    display: block;
+    transform: rotatex(180deg) translateY(-1rem);
+    line-height: 1;
+    mask-image: linear-gradient(transparent 40%, white 100%);
+    filter: blur(2px);
+}
