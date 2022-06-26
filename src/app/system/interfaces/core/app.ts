@@ -3,11 +3,12 @@ import { CalculatorComponent } from "../../../apps/calculator/calculator.compone
 
 export interface App{
     name: string;
-    icon: any;
+    icon: AppIconMaterial;
     installed: boolean;
     runtime: string;
 }
 
+/* ----- Runtime ------ */
 type AppRuntime = {
     [key: string]: Type<any>
 };
@@ -16,3 +17,9 @@ export const AppRuntimes: AppRuntime = {
     calculator: CalculatorComponent,
 }
 
+/* ----- Icon ----- */
+export interface AppIconMaterial{
+    type: 'material';
+    name: string;
+    color: string;
+}
