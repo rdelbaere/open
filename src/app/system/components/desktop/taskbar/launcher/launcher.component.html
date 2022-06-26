@@ -7,7 +7,7 @@
         <div class="apps">
 
             <div class="app" *ngFor="let app of installedApps" (click)="launch(app)">
-                <mat-icon [ngStyle]="{'color': app.color}" inline="true">{{ app.icon }}</mat-icon>
+                <mat-icon [ngStyle]="{'color': app.icon.color}" inline="true">{{ app.icon.name }}</mat-icon>
                 {{ app.name }}
             </div>
 

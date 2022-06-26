@@ -3,8 +3,7 @@ import { CalculatorComponent } from "../../../apps/calculator/calculator.compone
 
 export interface App{
     name: string;
-    icon: string;
-    color: string;
+    icon: any;
     installed: boolean;
     runtime: string;
 }
