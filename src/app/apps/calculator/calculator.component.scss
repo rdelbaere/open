@@ -1,8 +1,9 @@
+@import "../../../theme/shared/utils";
+
 .calculator{
-    height: 100%;
+    @include window-default-container;
     display: flex;
     flex-direction: column;
-    background-color: var(--system-color-primary);
 
     &-screen{
         font-size: 2rem;

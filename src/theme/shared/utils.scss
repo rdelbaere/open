@@ -11,3 +11,8 @@
     mask-image: linear-gradient(transparent 40%, white 100%);
     filter: blur(2px);
 }
+
+@mixin window-default-container{
+    background-color: var(--system-color-primary);
+    height: 100%;
+}

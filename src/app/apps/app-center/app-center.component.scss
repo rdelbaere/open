@@ -1,0 +1,5 @@
+@import "../../../theme/shared/utils";
+
+.app-center{
+    @include window-default-container;
+}

@@ -1,5 +1,6 @@
 import { Type } from "@angular/core";
 import { CalculatorComponent } from "../../../apps/calculator/calculator.component";
+import { AppCenterComponent } from "../../../apps/app-center/app-center.component";
 
 export interface App{
     name: string;
@@ -15,6 +16,7 @@ type AppRuntime = {
 
 export const AppRuntimes: AppRuntime = {
     calculator: CalculatorComponent,
+    appcenter: AppCenterComponent,
 }
 
 /* ----- Icon ----- */
