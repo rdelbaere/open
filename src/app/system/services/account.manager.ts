@@ -39,10 +39,6 @@ export class AccountManager {
         return true;
     }
 
-    private storeSession(): void {
-        localStorage.setItem(AccountManager.storageKey, JSON.stringify(AccountManager.session))
-    }
-
     private reloadSession(): void {
         const stored = localStorage.getItem(AccountManager.storageKey);
         if(stored){
@@ -53,6 +49,10 @@ export class AccountManager {
                 AccountManager.session = decodedSession;
             }
         }
+    }
+
+    private storeSession(): void {
+        localStorage.setItem(AccountManager.storageKey, JSON.stringify(AccountManager.session))
     }
 
     private clearStoredSession(): void {
