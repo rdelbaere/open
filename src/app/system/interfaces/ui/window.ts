@@ -3,6 +3,7 @@ import { Size } from "./size";
 import { Process } from "../core/process";
 
 export interface Window{
+    config: WindowConfiguration
     position: Position;
     size: Size;
     maximized: boolean;
@@ -11,6 +12,7 @@ export interface Window{
 }
 
 export class DefaultWindow implements Window{
+    config = new DefaultWindowConfiguration();
     position = {
         x: 20,
         y: 20,
@@ -23,4 +25,18 @@ export class DefaultWindow implements Window{
     minimized = false;
 
     constructor(public process: Process){}
+}
+
+export interface ConfigureWindow{
+    configureWindow(): WindowConfiguration;
+}
+
+export interface WindowConfiguration{
+    minWidth?: number;
+    minHeight?: number;
+}
+
+export class DefaultWindowConfiguration implements WindowConfiguration{
+    minWidth = 300;
+    minHeight = 100;
 }

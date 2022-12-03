@@ -6,29 +6,26 @@
 
     .apps{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        column-gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 10px;
 
         .app{
             display: flex;
             align-items: center;
-            border-bottom: 1px solid var(--system-overlay);
+            border-left: 2px solid var(--system-color-secondary);
+            background-color: rgba(255, 255, 255, 0.05);
             padding: 5px 10px;
 
             .app-summary{
                 flex: 1;
                 display: flex;
                 font-size: 1.2rem;
-                padding: 20px;
+                padding: 20px 5px;
 
                 mat-icon{
                     font-size: 2.2rem;
                     margin-right: 5px;
                 }
-            }
-
-            &:last-child{
-                border-bottom: none;
             }
         }
     }

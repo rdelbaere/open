@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui/window";
 
 @Component({
   selector: 'app-apps-calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss']
 })
-export class CalculatorComponent{
+export class CalculatorComponent implements ConfigureWindow{
     operation: string = "";
     isCompleted: boolean = false;
 
@@ -13,6 +14,10 @@ export class CalculatorComponent{
     validOperators: RegExp = /^[+\-÷×]$/;
 
     constructor(){}
+
+    configureWindow(): WindowConfiguration {
+        return { minHeight: 250 };
+    }
 
     onPressed($event: MouseEvent){
         const target = <HTMLInputElement>$event.target;

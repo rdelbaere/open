@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from "rxjs";
-import { DefaultWindow, Window } from "../interfaces/ui/window";
+import { DefaultWindow, DefaultWindowConfiguration, Window, WindowConfiguration } from "../interfaces/ui/window";
 import { Process } from "../interfaces/core/process";
 import { Position } from "../interfaces/ui/position";
 import { Size } from "../interfaces/ui/size";
@@ -82,6 +82,11 @@ export class WindowManager{
 
     updateSize(window: Window, size: Size){
         window.size = size;
+        this.dispatch();
+    }
+
+    updateConfiguration(window: Window, configuration: WindowConfiguration): void {
+        window.config = {...new DefaultWindowConfiguration(), ...configuration};
         this.dispatch();
     }
 
