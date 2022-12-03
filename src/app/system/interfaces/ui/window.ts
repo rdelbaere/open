@@ -36,6 +36,7 @@ export interface WindowConfiguration{
     minHeight?: number;
 }
 
+// TODO - Find an alternative to not duplicate this interface
 export interface ResolvedWindowConfiguration{
     minWidth: number;
     minHeight: number;
