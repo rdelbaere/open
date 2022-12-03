@@ -7,7 +7,7 @@ import { BackendService } from "./backend.service";
 @Injectable({
     providedIn: 'root'
 })
-export class AppStore{
+export class AppCenter {
     private subject: BehaviorSubject<App[]> = new BehaviorSubject<App[]>([]);
     private apps: App[] = [];
 
@@ -35,5 +35,27 @@ export class AppStore{
 
     getRuntime(app: App): Type<any> {
         return AppRuntimes[app.runtime];
+    }
+
+    install(app: App) {
+        return this.backendService.post('/apps/' + app.id + '/install').pipe(
+            map(response => this.update(response.data))
+        );
+    }
+
+    uninstall(app: App) {
+        return this.backendService.post('/apps/' + app.id + '/uninstall').pipe(
+            map(response => this.update(response.data))
+        );
+    }
+
+    private update(app: App){
+        for(let i in this.apps){
+            if(this.apps[i].id === app.id){
+                this.apps[i] = app;
+            }
+        }
+
+        this.subject.next(this.apps);
     }
 }

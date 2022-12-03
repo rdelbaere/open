@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, AfterViewInit, ViewContainerRef, ViewChild, Input, ComponentRef } from '@angular/core';
 import { Window } from "../../../interfaces/ui/window";
-import { AppStore } from "../../../services/app.store";
+import { AppCenter } from "../../../services/app.center";
 
 @Component({
     selector: 'app-window-runtime',
@@ -12,14 +12,14 @@ export class WindowRuntimeComponent implements AfterViewInit {
     @ViewChild('runtime', {read: ViewContainerRef}) runtime: ViewContainerRef;
     componentRef: ComponentRef<any>;
 
-    constructor(private resolver: ComponentFactoryResolver, private appStore: AppStore){}
+    constructor(private resolver: ComponentFactoryResolver, private appCenter: AppCenter){}
 
     ngAfterViewInit(){
         this.loadRuntime();
     }
 
     loadRuntime(){
-        const componentType = this.appStore.getRuntime(this.window.process.activity);
+        const componentType = this.appCenter.getRuntime(this.window.process.activity);
         const factory = this.resolver.resolveComponentFactory(componentType);
         this.componentRef = this.runtime.createComponent(factory);
         this.componentRef.location.nativeElement.classList.add('window-runtime-component');

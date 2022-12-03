@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KernelModule } from "./system/modules/kernel.module";
+import { AppsModule } from "./system/modules/apps.module";
 
 import { registerLocaleData } from "@angular/common";
 import localeFr from '@angular/common/locales/fr';
@@ -20,6 +21,7 @@ registerLocaleData(localeFr);
         BrowserAnimationsModule,
         AppRoutingModule,
         KernelModule,
+        AppsModule,
     ],
     providers: [
         { provide: LOCALE_ID, useValue: "fr-FR" }

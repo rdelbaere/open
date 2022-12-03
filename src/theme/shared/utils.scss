@@ -14,5 +14,6 @@
 
 @mixin window-default-container{
     background-color: var(--system-color-primary);
+    color: var(--system-color-light);
     height: 100%;
 }

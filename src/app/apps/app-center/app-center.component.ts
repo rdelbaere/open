@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AppCenter } from '../../system/services/app.center'
+import { App } from "../../system/interfaces/core/app";
+import { NotificationCenter } from "../../system/services/notification.center";
+import { NotificationType } from "../../system/interfaces/core/notification";
 
 @Component({
-  selector: 'app-app-center',
-  templateUrl: './app-center.component.html',
-  styleUrls: ['./app-center.component.scss']
+    selector: 'app-apps-app-center',
+    templateUrl: './app-center.component.html',
+    styleUrls: ['./app-center.component.scss']
 })
-export class AppCenterComponent implements OnInit {
+export class AppCenterComponent {
+    apps: App[];
+    processing: App|null;
 
-  constructor() { }
+    constructor(private appCenter: AppCenter, private notificationCenter: NotificationCenter) {
+        this.appCenter.getAll().subscribe(apps => {
+            this.apps = apps;
+        });
+    }
 
-  ngOnInit(): void {
-  }
+    install(app: App): void {
+        this.processing = app;
+        this.appCenter.install(app).subscribe(() => {
+            this.notificationCenter.dispatch({
+                type: NotificationType.success,
+                message: "L'application " + app.name + " à été installée",
+            });
+            this.processing = null;
+        });
+    }
 
+    uninstall(app: App): void {
+        this.processing = app;
+        this.appCenter.uninstall(app).subscribe(() => {
+            this.notificationCenter.dispatch({
+                type: NotificationType.success,
+                message: "L'application " + app.name + " à été désinstallée",
+            });
+            this.processing = null;
+        });
+    }
 }

@@ -1,3 +1,23 @@
 <div class="app-center">
-
+    <div class="apps">
+        <div class="app" *ngFor="let app of apps">
+            <div class="app-summary">
+                <mat-icon [ngStyle]="{'color': app.icon.color}" inline="true">{{ app.icon.name }}</mat-icon>
+                {{ app.name }}
+            </div>
+            <div class="app-actions">
+                <button mat-flat-button color="accent" [disabled]="!!processing" [class.loader]="processing === app"
+                        *ngIf="!app.installed" (click)="install(app)">
+                    Installer
+                </button>
+                <button mat-flat-button color="warn" [disabled]="!!processing" [class.loader]="processing === app"
+                        *ngIf="app.installed && !app.byDefault" (click)="uninstall(app)">
+                    Désinstaller
+                </button>
+                <button mat-flat-button disabled *ngIf="app.installed && app.byDefault">
+                    Installée
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { App } from "../../../../interfaces/core/app";
-import { AppStore } from "../../../../services/app.store";
+import { AppCenter } from "../../../../services/app.center";
 import {TaskManager} from "../../../../services/task.manager";
 import { AccountManager } from "../../../../services/account.manager";
 
@@ -19,12 +19,12 @@ export class LauncherComponent {
     constructor(
         private renderer: Renderer2,
         private accountManager: AccountManager,
-        private appStore: AppStore,
+        private appCenter: AppCenter,
         private taskManager: TaskManager
     ){
         this.setupPanelAutoclose();
 
-        this.appStore.getInstalled().subscribe(installedApps => {
+        this.appCenter.getInstalled().subscribe(installedApps => {
             this.installedApps = installedApps;
         });
     }
