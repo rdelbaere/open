@@ -5,6 +5,10 @@
     padding: 20px;
 
     .apps{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        column-gap: 10px;
+
         .app{
             display: flex;
             align-items: center;
