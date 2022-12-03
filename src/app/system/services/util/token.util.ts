@@ -11,7 +11,7 @@ export class TokenUtil {
             token = this.decode(token);
         }
 
-        return token.exp <= Date.now();
+        return token.exp <= Date.now() / 1000;
     }
 
     decode(token: string): BackendToken {
