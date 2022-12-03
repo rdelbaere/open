@@ -85,8 +85,8 @@ export class WindowManager{
         this.dispatch();
     }
 
-    updateConfiguration(window: Window, configuration: WindowConfiguration): void {
-        window.config = {...new DefaultWindowConfiguration(), ...configuration};
+    updateConfiguration(window: Window, config: WindowConfiguration): void {
+        window.config = {...new DefaultWindowConfiguration(), ...config};
         this.dispatch();
     }
 

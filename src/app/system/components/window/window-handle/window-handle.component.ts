@@ -36,8 +36,8 @@ export class WindowHandleComponent{
         const newHeight = this.windowStartSize.height + ($event.clientY - this.cursorStartPosition.y);
 
         const newSize = {
-            width: Math.max(newWidth, this.window.config.minWidth ?? 0),
-            height: Math.max(newHeight, this.window.config.minHeight ?? 0),
+            width: Math.max(newWidth, this.window.config.minWidth),
+            height: Math.max(newHeight, this.window.config.minHeight),
         };
 
         this.resized.emit(newSize);
