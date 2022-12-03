@@ -5,6 +5,7 @@ import { BackendService } from "./backend.service";
 import { Credentials } from "../interfaces/backend/credentials";
 import { AccountSession } from "../interfaces/core/account";
 import { TokenUtil } from "./util/token.util";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,11 @@ export class AccountManager {
     private static storageKey: string = 'open-session';
     private static session: AccountSession|null;
 
-    constructor(private backend: BackendService, private tokenUtil: TokenUtil){
+    constructor(
+        private router: Router,
+        private backend: BackendService,
+        private tokenUtil: TokenUtil
+    ){
         this.reloadSession();
     }
 
@@ -27,6 +32,7 @@ export class AccountManager {
     logout(): void {
         AccountManager.session = null;
         this.clearStoredSession();
+        this.router.navigate(['/login']);
     }
 
     isAuthenticated(): boolean {

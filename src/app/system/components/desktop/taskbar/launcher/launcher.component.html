@@ -4,13 +4,21 @@
     </div>
 
     <div class="launcher" #panel [hidden]="!panelVisible">
-        <div class="apps">
-
-            <div class="app" *ngFor="let app of installedApps" (click)="launch(app)">
-                <mat-icon [ngStyle]="{'color': app.icon.color}" inline="true">{{ app.icon.name }}</mat-icon>
-                {{ app.name }}
+        <div class="launcher-content">
+            <div class="apps">
+                <div class="app" *ngFor="let app of installedApps" (click)="launch(app)">
+                    <mat-icon [ngStyle]="{'color': app.icon.color}" inline="true">{{ app.icon.name }}</mat-icon>
+                    {{ app.name }}
+                </div>
             </div>
 
+            <div class="spacer"></div>
+
+            <div class="actions">
+                <div class="action" (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+                </div>
+            </div>
         </div>
     </div>
 </div>
