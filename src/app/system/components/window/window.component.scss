@@ -45,6 +45,7 @@
     &-body{
         background-color: var(--system-color-light);
         flex: 1;
+        overflow: hidden;
     }
 
     app-window-handle{
