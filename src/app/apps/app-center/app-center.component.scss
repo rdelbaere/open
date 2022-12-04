@@ -4,6 +4,15 @@
     @include window-default-container;
     padding: 20px;
 
+    .search{
+        width: 300px;
+        margin: 30px auto;
+
+        mat-form-field{
+            width: 100%;
+        }
+    }
+
     .apps{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));

@@ -1,6 +1,13 @@
 <div class="app-center">
+    <div class="search">
+        <mat-form-field appearance="outline" color="accent">
+            <mat-label>Rechercher</mat-label>
+            <input matInput [(ngModel)]="filter">
+        </mat-form-field>
+    </div>
+
     <div class="apps">
-        <div class="app" *ngFor="let app of apps" [class.installed]="app.installed">
+        <div class="app" *ngFor="let app of apps | simpleSearch:filter:'name'" [class.installed]="app.installed">
             <div class="app-summary">
                 <mat-icon [ngStyle]="{'color': app.icon.color}" inline="true">{{ app.icon.name }}</mat-icon>
                 {{ app.name }}
