@@ -25,6 +25,7 @@ export class AppCenterComponent implements ConfigureWindow {
         return { minWidth: 600, minHeight: 400 };
     }
 
+    // TODO - Manage errors
     install(app: App): void {
         this.processing = app;
         this.appCenter.install(app).subscribe(() => {
