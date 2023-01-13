@@ -50,7 +50,7 @@ export class AppCenter {
     }
 
     private update(app: App){
-        for(let i in this.apps){
+        for(const i in this.apps){
             if(this.apps[i].id === app.id){
                 this.apps[i] = app;
             }

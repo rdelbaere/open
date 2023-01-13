@@ -6,13 +6,9 @@ import { Notification } from "../interfaces/core/notification";
     providedIn: 'root'
 })
 export class NotificationCenter {
-    private notifications: Array<Notification> = [];
     private liveFeed: ReplaySubject<Notification> = new ReplaySubject<Notification>(1);
 
-    constructor(){}
-
     dispatch(notification: Notification): void{
-        this.notifications.push(notification);
         this.liveFeed.next(notification);
     }
 

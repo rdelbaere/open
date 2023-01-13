@@ -13,8 +13,6 @@ export class CalculatorComponent implements ConfigureWindow{
     validChars: RegExp = /^[0-9.+\-*/ ]+$/;
     validOperators: RegExp = /^[+\-÷×]$/;
 
-    constructor(){}
-
     configureWindow(): WindowConfiguration {
         return { minHeight: 250 };
     }

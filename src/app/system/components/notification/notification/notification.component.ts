@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Notification } from "../../../interfaces/core/notification";
 
 @Component({
@@ -6,11 +6,6 @@ import { Notification } from "../../../interfaces/core/notification";
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent {
     @Input() notification: Notification;
-
-    constructor() { }
-
-    ngOnInit(): void {
-    }
 }

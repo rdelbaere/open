@@ -9,7 +9,7 @@ import { Window } from "../../../interfaces/ui/window";
   styleUrls: ['./window-handle.component.scss']
 })
 export class WindowHandleComponent{
-    @Input('window') window: Window;
+    @Input() window: Window;
     @Output() resized: EventEmitter<Size> = new EventEmitter<Size>();
     private cursorStartPosition: Position;
     private windowStartSize: Size;

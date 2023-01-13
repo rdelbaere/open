@@ -9,7 +9,7 @@ import { WindowManager } from "../../../services/window.manager";
     styleUrls: ['./window-runtime.component.scss']
 })
 export class WindowRuntimeComponent implements AfterViewInit {
-    @Input('window') window: Window;
+    @Input() window: Window;
     @ViewChild('runtime', {read: ViewContainerRef}) runtime: ViewContainerRef;
     component: ComponentRef<any>;
 

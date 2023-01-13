@@ -12,8 +12,6 @@ export class WindowManager{
     private subject: BehaviorSubject<Window[]> = new BehaviorSubject<Window[]>([]);
     private windows: Window[] = [];
 
-    constructor(){}
-
     getAll(): Observable<Window[]>{
         return this.subject.asObservable();
     }
@@ -30,7 +28,7 @@ export class WindowManager{
     }
 
     closeAll(process: Process){
-        for(let index in this.windows){
+        for(const index in this.windows){
             if(this.windows[index].process === process){
                 this.windows.splice(parseInt(index), 1);
             }

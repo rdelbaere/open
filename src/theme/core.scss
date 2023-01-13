@@ -10,4 +10,9 @@ body{
     font-size: 14px;
 }
 
+// TODO - Remove this crappy fix
+mat-icon.mat-icon{
+    overflow: visible;
+}
+
 @import "components/loader";

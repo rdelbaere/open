@@ -7,9 +7,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class ClockComponent implements OnInit, OnDestroy {
     now: Date = new Date();
-    timer?: ReturnType<typeof setInterval>;
-
-    constructor(){}
+    timer: number;
 
     ngOnInit(): void {
         this.setupTimer();
@@ -20,12 +18,12 @@ export class ClockComponent implements OnInit, OnDestroy {
     }
 
     setupTimer() {
-        this.timer = setInterval(() => {
+        this.timer = window.setInterval(() => {
             this.now = new Date();
         }, 1000);
     }
 
     stopTimer() {
-        clearInterval(this.timer);
+        window.clearInterval(this.timer);
     }
 }

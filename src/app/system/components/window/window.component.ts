@@ -12,7 +12,7 @@ import { Size } from "../../interfaces/ui/size";
 })
 export class WindowComponent{
     @ViewChild('window') element: ElementRef;
-    @Input('window') win: Window;
+    @Input() win: Window;
 
     constructor(
         private taskManager: TaskManager,
