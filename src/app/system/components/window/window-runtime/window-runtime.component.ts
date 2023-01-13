@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, AfterViewInit, ViewContainerRef, ViewChild, Input, ComponentRef } from '@angular/core';
+import { Component, AfterViewInit, ViewContainerRef, ViewChild, Input } from '@angular/core';
 import { Window } from "../../../interfaces/ui/window";
 import { AppCenter } from "../../../services/app.center";
 import { WindowManager } from "../../../services/window.manager";
@@ -12,7 +12,7 @@ export class WindowRuntimeComponent implements AfterViewInit {
     @Input() window: Window;
     @ViewChild('runtime', {read: ViewContainerRef}) runtime: ViewContainerRef;
 
-    constructor(private resolver: ComponentFactoryResolver, private appCenter: AppCenter, private windowManager: WindowManager){}
+    constructor(private appCenter: AppCenter, private windowManager: WindowManager){}
 
     ngAfterViewInit(){
         this.loadRuntime();
@@ -20,8 +20,7 @@ export class WindowRuntimeComponent implements AfterViewInit {
 
     loadRuntime(){
         const componentType = this.appCenter.getRuntime(this.window.process.activity);
-        const factory = this.resolver.resolveComponentFactory(componentType);
-        const component = this.runtime.createComponent(factory);
+        const component = this.runtime.createComponent(componentType);
         component.location.nativeElement.classList.add("window-runtime-component");
 
         if (typeof component.instance.configureWindow === "function") {
@@ -29,5 +28,4 @@ export class WindowRuntimeComponent implements AfterViewInit {
             this.windowManager.updateConfiguration(this.window, configuration);
         }
     }
-
 }
