@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-desktop-taskbar-clock',
@@ -7,7 +7,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class ClockComponent implements OnInit, OnDestroy {
     now: Date = new Date();
-    timer?: number;
+    timer?: ReturnType<typeof setInterval>;
 
     constructor(){}
 
