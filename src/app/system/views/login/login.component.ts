@@ -12,8 +12,8 @@ import { NotificationType } from "../../interfaces/core/notification";
 })
 export class LoginComponent {
     loginForm: FormGroup = new FormGroup({
-        username: new FormControl(''),
-        password: new FormControl(''),
+        username: new FormControl<string>(''),
+        password: new FormControl<string>(''),
     });
     loading: boolean = false;
 
