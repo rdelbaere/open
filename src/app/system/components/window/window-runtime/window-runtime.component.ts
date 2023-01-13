@@ -11,7 +11,6 @@ import { WindowManager } from "../../../services/window.manager";
 export class WindowRuntimeComponent implements AfterViewInit {
     @Input() window: Window;
     @ViewChild('runtime', {read: ViewContainerRef}) runtime: ViewContainerRef;
-    component: ComponentRef<any>;
 
     constructor(private resolver: ComponentFactoryResolver, private appCenter: AppCenter, private windowManager: WindowManager){}
 
@@ -22,11 +21,11 @@ export class WindowRuntimeComponent implements AfterViewInit {
     loadRuntime(){
         const componentType = this.appCenter.getRuntime(this.window.process.activity);
         const factory = this.resolver.resolveComponentFactory(componentType);
-        this.component = this.runtime.createComponent(factory);
-        this.component.location.nativeElement.classList.add("window-runtime-component");
+        const component = this.runtime.createComponent(factory);
+        component.location.nativeElement.classList.add("window-runtime-component");
 
-        if (typeof this.component.instance.configureWindow === "function") {
-            const configuration = this.component.instance.configureWindow();
+        if (typeof component.instance.configureWindow === "function") {
+            const configuration = component.instance.configureWindow();
             this.windowManager.updateConfiguration(this.window, configuration);
         }
     }
