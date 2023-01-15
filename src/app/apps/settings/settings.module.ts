@@ -5,16 +5,22 @@ import { SettingsComponent } from "./settings.component";
 import { HomeComponent } from './views/home/home.component';
 import { AboutComponent } from './views/about/about.component';
 import { StateNavigationModule } from "../../sdk/state-navigation/state-navigation.module";
+import { MaterialModule } from "../../system/modules/material.module";
+import { CustomizationComponent } from './views/customization/customization.component';
+import { AccountComponent } from './views/account/account.component';
 
 @NgModule({
     declarations: [
         SettingsComponent,
         HomeComponent,
         AboutComponent,
+        CustomizationComponent,
+        AccountComponent,
     ],
     imports: [
         CommonModule,
         StateNavigationModule,
+        MaterialModule,
     ],
 })
 export class SettingsModule { }
