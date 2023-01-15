@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SimpleSearchPipe } from "../pipes/simple-search.pipe";
+import { SimpleSearchPipe } from "./simple-search.pipe";
 
 const declarations = [
     SimpleSearchPipe
@@ -17,4 +17,4 @@ const declarations = [
         ...declarations
     ]
 })
-export class SharedModule { }
+export class UtilsModule { }

@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 
 import { AppCenterComponent } from "./app-center.component";
 import { MaterialModule } from "../../system/modules/material.module";
-import { SharedModule } from "../../system/modules/shared.module";
+import { UtilsModule } from "../../sdk/utils/utils.module";
 
 @NgModule({
     declarations: [
@@ -14,7 +14,7 @@ import { SharedModule } from "../../system/modules/shared.module";
         CommonModule,
         FormsModule,
         MaterialModule,
-        SharedModule,
+        UtilsModule,
     ],
 })
 export class AppCenterModule { }
