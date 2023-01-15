@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { BackendService } from "./backend.service";
 import { Credentials } from "../interfaces/backend/credentials";
-import { AccountSession } from "../interfaces/core/account";
+import { AccountSession, AccountUser } from "../interfaces/core/account";
 import { TokenUtil } from "./util/token.util";
 import { Router } from "@angular/router";
 
@@ -37,6 +37,14 @@ export class AccountManager {
 
     isAuthenticated(): boolean {
         return !!AccountManager.session;
+    }
+
+    getUser(): AccountUser {
+        if(!AccountManager.session){
+            throw new Error('No current session');
+        }
+
+        return AccountManager.session.user;
     }
 
     private startSession(session: AccountSession): boolean{
