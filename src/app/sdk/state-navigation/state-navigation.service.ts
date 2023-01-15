@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class StateNavigationService {
     private navigations: {[key: string]: Subject<string>} = {};
 
-    register(navigationName: string): Subject<string> {
+    register(navigationName: string): Observable<string> {
         if(this.navigations[navigationName] !== undefined) {
             throw new Error(`Another navigation already has the name '${navigationName}'`);
         }
 
         this.navigations[navigationName] = new Subject<string>();
-        return this.navigations[navigationName];
+        return this.navigations[navigationName].asObservable();
     }
 
     unregister(navigationName: string) {

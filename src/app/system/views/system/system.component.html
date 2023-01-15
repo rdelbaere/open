@@ -1,1 +1,5 @@
-<app-desktop></app-desktop>
+<app-desktop *ngIf="booted; else loader"></app-desktop>
+
+<ng-template #loader>
+    <app-boot-loader></app-boot-loader>
+</ng-template>

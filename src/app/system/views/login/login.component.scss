@@ -1,19 +1,10 @@
 @import "../../../../theme/shared/utils";
 
 .login-container{
-    background-color: var(--system-color-primary);
-    height: 100vh;
-    border-top: 4px solid var(--system-color-secondary);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
+    @include system-screen;
 
     h1{
         @include logo-font;
-        color: var(--system-color-light);
         text-align: center;
         font-size: 3rem;
 

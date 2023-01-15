@@ -16,11 +16,10 @@ export class AppCenter {
     }
 
     initialize(){
-        this.backendService.get('/apps')
-            .subscribe(payload => {
-                this.apps = payload.data;
-                this.subject.next(this.apps);
-            });
+        this.backendService.get('/apps').subscribe(payload => {
+            this.apps = payload.data;
+            this.subject.next(this.apps);
+        });
     }
 
     getAll(): Observable<App[]>{

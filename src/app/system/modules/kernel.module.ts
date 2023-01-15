@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LiveFeedComponent } from "../components/notification/live-feed/live-feed.component";
 import { NotificationComponent } from "../components/notification/notification/notification.component";
+import { BootLoaderComponent } from "../components/boot-loader/boot-loader.component";
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { NotificationComponent } from "../components/notification/notification/n
         WindowRuntimeComponent,
         LiveFeedComponent,
         NotificationComponent,
+        BootLoaderComponent,
     ],
     imports: [
         CommonModule,
