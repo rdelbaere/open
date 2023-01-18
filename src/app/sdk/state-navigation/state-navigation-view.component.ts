@@ -13,23 +13,12 @@ export class StateNavigationViewComponent implements OnInit, OnDestroy {
     constructor(private viewContainerRef: ViewContainerRef, private navigationService: StateNavigationService) {}
 
     ngOnInit() {
-        const subject = this.navigationService.register(this.name);
-        subject.subscribe(stateName => this.handle(stateName));
-        this.navigate(this.getDefaultState());
+        const subject = this.navigationService.register(this.name, this.getDefaultState());
+        subject.subscribe(state => this.navigate(state));
     }
 
     ngOnDestroy() {
         this.navigationService.unregister(this.name);
-    }
-
-    private handle(stateName: string) {
-        for (const state of this.states) {
-            if (state.name === stateName) {
-                return this.navigate(state);
-            }
-        }
-
-        throw new Error(`Unknown '${stateName}' state in '${this.name}' navigation`);
     }
 
     private navigate(state: State) {

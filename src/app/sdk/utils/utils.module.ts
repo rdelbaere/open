@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SimpleSearchPipe } from "./simple-search.pipe";
+import { SimpleFilterPipe } from "./simple-filter.pipe";
 
 const declarations = [
-    SimpleSearchPipe
+    SimpleFilterPipe
 ];
 
 @NgModule({

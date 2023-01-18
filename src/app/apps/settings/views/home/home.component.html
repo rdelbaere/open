@@ -1,16 +1,9 @@
 <nav>
     <ul>
-        <li sdkStateNavigationLink="customization" navigationName="apps-settings">
-            <mat-icon>tune</mat-icon>
-            Personnalisation
-        </li>
-        <li sdkStateNavigationLink="account" navigationName="apps-settings">
-            <mat-icon>person</mat-icon>
-            Compte
-        </li>
-        <li sdkStateNavigationLink="about" navigationName="apps-settings">
-            <mat-icon>info</mat-icon>
-            A propos
+        <li *ngFor="let state of states | simpleFilter:'home':'name':false"
+            [sdkStateNavigationLink]="state" navigationName="apps-settings">
+            <mat-icon>{{ state.extra.icon }}</mat-icon>
+            {{ state.extra.label }}
         </li>
     </ul>
 </nav>

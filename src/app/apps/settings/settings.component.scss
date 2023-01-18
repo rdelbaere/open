@@ -3,4 +3,28 @@
 .settings{
     @include window-default-container;
 
+    header{
+        border-bottom: 1px solid var(--system-color-light);
+        padding: 10px;
+        display: flex;
+        align-items: center;
+
+        button{
+            background-color: transparent;
+            border: none;
+            color: var(--system-color-light);
+            cursor: pointer;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        mat-icon{
+            margin-right: 5px;
+        }
+    }
+
+    .settings-view{
+        padding: 10px;
+    }
 }

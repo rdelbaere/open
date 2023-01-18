@@ -7,11 +7,11 @@ import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements ConfigureWindow{
-    operation: string = "";
-    isCompleted: boolean = false;
+    operation = "";
+    isCompleted = false;
 
-    validChars: RegExp = /^[0-9.+\-*/ ]+$/;
-    validOperators: RegExp = /^[+\-÷×]$/;
+    validChars = /^[0-9.+\-*/ ]+$/;
+    validOperators = /^[+\-÷×]$/;
 
     configureWindow(): WindowConfiguration {
         return { minHeight: 250 };

@@ -8,6 +8,7 @@ import { StateNavigationModule } from "../../sdk/state-navigation/state-navigati
 import { MaterialModule } from "../../system/modules/material.module";
 import { CustomizationComponent } from './views/customization/customization.component';
 import { AccountComponent } from './views/account/account.component';
+import { UtilsModule } from "../../sdk/utils/utils.module";
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { AccountComponent } from './views/account/account.component';
         CommonModule,
         StateNavigationModule,
         MaterialModule,
+        UtilsModule,
     ],
 })
 export class SettingsModule { }

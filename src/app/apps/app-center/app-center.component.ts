@@ -13,7 +13,7 @@ import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui
 export class AppCenterComponent implements ConfigureWindow {
     apps: App[];
     processing: App | null;
-    filter: string = "";
+    filter = "";
 
     constructor(private appCenter: AppCenter, private notificationCenter: NotificationCenter) {
         this.appCenter.getAll().subscribe(apps => {

@@ -4,4 +4,5 @@ export interface State{
     name: string,
     component: Type<any>,
     default?: boolean
+    extra?: any;
 }

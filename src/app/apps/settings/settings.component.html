@@ -1,4 +1,14 @@
 <section class="settings">
+    <header *ngIf="currentState && currentState.name !== 'home'">
+        <button [sdkStateNavigationLink]="homeState" navigationName="apps-settings">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="separator"></div>
+        <mat-icon>{{ currentState.extra.icon }}</mat-icon>
+        {{ currentState.extra.label }}
+    </header>
     <!-- TODO - Unique name -->
-    <sdk-state-navigation-view name="apps-settings" [states]="states"></sdk-state-navigation-view>
+    <div class="settings-view">
+        <sdk-state-navigation-view name="apps-settings" [states]="states"></sdk-state-navigation-view>
+    </div>
 </section>
