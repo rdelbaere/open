@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { BackendService } from "./backend.service";
-import { System, SystemConfiguration } from "../interfaces/core/system";
+import { DefaultSystemConfiguration, System, SystemConfiguration } from "../interfaces/core/system";
 import { NotificationCenter } from "./notification.center";
 import { NotificationType } from "../interfaces/core/notification";
 import { Router } from "@angular/router";
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 })
 export class SystemRuntime {
     private system: System;
-    private configurationSubject: BehaviorSubject<SystemConfiguration>;
+    private configurationSubject: BehaviorSubject<SystemConfiguration> = new BehaviorSubject(new DefaultSystemConfiguration());
 
     constructor(
         private router: Router,
@@ -25,7 +25,7 @@ export class SystemRuntime {
         this.backendService.get(`/systems/${systemId}`).subscribe({
             next: payload => {
                 this.system = payload.data;
-                this.configurationSubject = new BehaviorSubject<SystemConfiguration>(this.system.configuration);
+                this.configurationSubject.next(this.system.configuration);
                 subject.next();
             },
             error: () => this.panic()

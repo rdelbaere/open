@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { wallpapersValues } from "./values";
+import { themesValues, wallpapersValues } from "./values";
 import { SystemConfiguration, SystemConstants } from "../../../../system/interfaces/core/system";
 import { SystemRuntime } from "../../../../system/services/system.runtime";
 
@@ -10,8 +10,12 @@ import { SystemRuntime } from "../../../../system/services/system.runtime";
 })
 export class CustomizationComponent {
     configuration: SystemConfiguration;
+
     wallpapers = wallpapersValues;
     wallpaperPath = SystemConstants.wallpaperPath;
+
+    themes = themesValues;
+    themeClassPrefix = SystemConstants.themeClassPrefix;
 
     constructor(private systemRuntime: SystemRuntime) {
         this.systemRuntime.observeConfiguration().subscribe(config => {

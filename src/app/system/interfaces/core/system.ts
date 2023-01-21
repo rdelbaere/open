@@ -1,3 +1,5 @@
+import { SystemRuntime } from "../../services/system.runtime";
+
 export interface System{
     id: number;
     configuration: SystemConfiguration;
@@ -10,8 +12,16 @@ interface AbstractSystemConfiguration {
 
 export interface SystemConfiguration extends AbstractSystemConfiguration {
     wallpaper: string;
+    theme: string;
+}
+
+export class DefaultSystemConfiguration implements SystemConfiguration {
+    wallpaper = 'rocket.jpg';
+    theme = 'dark';
+    [key: string]: string;
 }
 
 export const SystemConstants = {
     wallpaperPath: '/assets/images/system/wallpaper/',
+    themeClassPrefix: 'theme-system-',
 };

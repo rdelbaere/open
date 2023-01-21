@@ -1,10 +1,19 @@
 :root{
+    --system-color-confirm: #27ae60;
+    --system-color-warn: #c0392b;
+    --system-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.theme-system-dark{
     --system-color-primary: #3d3d3d;
     --system-color-secondary: #2980b9;
     --system-color-light: #ecf0f1;
-    --system-color-confirm: #27ae60;
-    --system-color-warn: #c0392b;
-
-    --system-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     --system-overlay: rgba(255, 255, 255, 0.25);
+}
+
+.theme-system-light{
+    --system-color-primary: #bdc3c7;
+    --system-color-secondary: #2980b9;
+    --system-color-light: #3d3d3d;
+    --system-overlay: rgba(0, 0, 0, 0.25);
 }

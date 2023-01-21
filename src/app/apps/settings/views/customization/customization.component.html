@@ -1,6 +1,13 @@
-<h2>Fond d'écran</h2>
+<h2>Thème</h2>
+<ul class="grid-view themes">
+    <li *ngFor="let theme of themes" [class]="themeClassPrefix + theme"
+        [class.active]="configuration.theme === theme" (click)="changeValue('theme', theme)">
+        {{ theme }}
+    </li>
+</ul>
 
-<ul class="wallpapers">
+<h2>Fond d'écran</h2>
+<ul class="grid-view wallpapers">
     <li *ngFor="let wallpaper of wallpapers"
         [class.active]="configuration.wallpaper === wallpaper" (click)="changeValue('wallpaper', wallpaper)">
         <img [src]="wallpaperPath + wallpaper" alt="Fond d'écran">
