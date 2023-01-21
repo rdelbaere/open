@@ -4,14 +4,18 @@
     @include window-default-container;
 
     header{
+        display: flex;
         box-shadow: var(--system-shadow);
         padding: 5px;
 
-        .header-navigation{
+        ul, ol{
+            display: flex;
             list-style-type: none;
             margin: 0;
-            padding: 0 20px 0 0;
-            display: flex;
+            padding: 0;
+        }
+
+        .header-navigation{
             gap: 5px;
 
             li{
@@ -27,8 +31,40 @@
             }
         }
 
-        .path-locator{
+        .separator{
+            align-self: stretch;
+            width: 3px;
+            background-color: var(--system-color-secondary);
+            margin: 5px 15px 5px 10px;
+        }
 
+        .path-locator{
+            align-items: center;
+
+            li{
+                display: flex;
+                align-items: center;
+                padding-left: 3px;
+                margin: 0 3px 0 0;
+                cursor: pointer;
+
+               &:not(:last-child):after{
+                   content: '\e5cc';
+                   font-family: "Material Icons", sans-serif;
+                   font-size: 1.6rem;
+                   margin-left: 3px;
+                   letter-spacing: 1px;
+                   background-color: var(--system-color-primary);
+                   height: 100%;
+               }
+                &:last-child{
+                    padding-right: 3px;
+                }
+
+                &:hover{
+                    background-color: var(--system-overlay);
+                }
+            }
         }
     }
 }
