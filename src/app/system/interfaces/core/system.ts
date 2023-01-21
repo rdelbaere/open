@@ -1,8 +1,7 @@
-import { SystemRuntime } from "../../services/system.runtime";
-
 export interface System{
     id: number;
     configuration: SystemConfiguration;
+    filesystem: {id: string};
 }
 
 // TODO - Check this trick (used for updateConfiguration in SystemRuntime)

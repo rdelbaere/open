@@ -3,15 +3,17 @@ import { App, AppRuntimes } from "../interfaces/core/app";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { BackendService } from "./backend.service";
+import { CoreSystemService } from "./util/core-system.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class AppCenter {
+export class AppCenter extends CoreSystemService{
     private subject: BehaviorSubject<App[]> = new BehaviorSubject<App[]>([]);
     private apps: App[] = [];
 
     constructor(private backendService: BackendService){
+        super();
         this.initialize();
     }
 
@@ -19,6 +21,7 @@ export class AppCenter {
         this.backendService.get('/apps').subscribe(payload => {
             this.apps = payload.data;
             this.subject.next(this.apps);
+            this.ready();
         });
     }
 
