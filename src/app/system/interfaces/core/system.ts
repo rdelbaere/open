@@ -22,6 +22,7 @@ export class DefaultSystemConfiguration implements SystemConfiguration {
 }
 
 export const SystemConstants = {
+    version: 0.1,
     wallpaperPath: '/assets/images/system/wallpaper/',
     themeClassPrefix: 'theme-system-',
 };

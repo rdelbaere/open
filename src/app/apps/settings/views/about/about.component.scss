@@ -1,0 +1,32 @@
+@import "../../../../../theme/shared/utils";
+
+h1{
+    @include logo-font;
+    text-align: center;
+    font-size: 3rem;
+    margin: 20px;
+
+    &:after{
+        @include reflect('Open');
+    }
+}
+
+ul{
+    list-style-type: none;
+
+    li{
+        font-size: 1rem;
+        margin: 5px;
+
+        span{
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding-right: 10px;
+        }
+    }
+
+    a{
+        color: var(--system-color-light);
+    }
+}
