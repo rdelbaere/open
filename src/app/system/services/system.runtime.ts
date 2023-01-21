@@ -4,6 +4,7 @@ import { BackendService } from "./backend.service";
 import { System, SystemConfiguration } from "../interfaces/core/system";
 import { NotificationCenter } from "./notification.center";
 import { NotificationType } from "../interfaces/core/notification";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -12,15 +13,22 @@ export class SystemRuntime {
     private system: System;
     private configurationSubject: BehaviorSubject<SystemConfiguration>;
 
-    constructor(private backendService: BackendService, private notificationCenter: NotificationCenter) {}
+    constructor(
+        private router: Router,
+        private backendService: BackendService,
+        private notificationCenter: NotificationCenter
+    ) {}
 
     boot(systemId: number): Observable<void>{
         const subject = new Subject<void>();
 
-        this.backendService.get(`/systems/${systemId}`).subscribe(payload => {
-            this.system = payload.data;
-            this.configurationSubject = new BehaviorSubject<SystemConfiguration>(this.system.configuration);
-            subject.next();
+        this.backendService.get(`/systems/${systemId}`).subscribe({
+            next: payload => {
+                this.system = payload.data;
+                this.configurationSubject = new BehaviorSubject<SystemConfiguration>(this.system.configuration);
+                subject.next();
+            },
+            error: () => this.panic()
         });
 
         return subject.asObservable();
@@ -57,5 +65,9 @@ export class SystemRuntime {
         });
 
         this.configurationSubject.next(updatedConfiguration);
+    }
+
+    private panic() {
+        this.router.navigate(['panic']);
     }
 }

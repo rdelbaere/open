@@ -22,6 +22,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { LiveFeedComponent } from "../components/notification/live-feed/live-feed.component";
 import { NotificationComponent } from "../components/notification/notification/notification.component";
 import { BootLoaderComponent } from "../components/boot-loader/boot-loader.component";
+import { PanicComponent } from "../views/panic/panic.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -40,12 +42,14 @@ import { BootLoaderComponent } from "../components/boot-loader/boot-loader.compo
         LiveFeedComponent,
         NotificationComponent,
         BootLoaderComponent,
+        PanicComponent,
     ],
     imports: [
         CommonModule,
         MaterialModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ]
 })
 export class KernelModule { }
