@@ -1,7 +1,7 @@
 <div class="panic">
-    <h1>Oups, le système à rencontré une erreur critique</h1>
+    <h1>Oups, le système a rencontré une erreur critique</h1>
     <div class="panic-resolve">
-        <button mat-flat-button color="accent" routerLink="/">Résoudre les problèmes*</button>
+        <button mat-flat-button color="accent" (click)="solve()">Résoudre les problèmes*</button>
         <div class="disclamer">
             * Ce bouton est livré sans aucune garantie
         </div>

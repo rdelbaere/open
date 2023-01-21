@@ -6,7 +6,7 @@ import { NotificationCenter } from "../../services/notification.center";
 import { NotificationType } from "../../interfaces/core/notification";
 
 @Component({
-    selector: 'app-login',
+    selector: 'app-views-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })

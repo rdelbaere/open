@@ -2,6 +2,7 @@ import { Type } from "@angular/core";
 import { CalculatorComponent } from "../../../apps/calculator/calculator.component";
 import { AppCenterComponent } from "../../../apps/app-center/app-center.component";
 import { SettingsComponent } from "../../../apps/settings/settings.component";
+import { PanicComponent } from "../../../apps/panic/panic.component";
 
 export interface App{
     id: number;
@@ -20,6 +21,7 @@ type AppRuntime = {
 export const AppRuntimes: AppRuntime = {
     calculator: CalculatorComponent,
     appcenter: AppCenterComponent,
+    panic: PanicComponent,
     settings: SettingsComponent,
 }
 

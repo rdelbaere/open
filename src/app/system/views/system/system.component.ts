@@ -3,7 +3,7 @@ import { AccountManager } from "../../services/account.manager";
 import { SystemRuntime } from "../../services/system.runtime";
 
 @Component({
-    selector: 'app-system',
+    selector: 'app-views-system',
     templateUrl: './system.component.html',
     styleUrls: ['./system.component.scss']
 })
