@@ -15,12 +15,15 @@ export class CustomizationComponent {
 
     constructor(private systemRuntime: SystemRuntime) {
         this.systemRuntime.observeConfiguration().subscribe(config => {
-            console.log('config');
             this.configuration = config;
         });
     }
 
     changeValue(key: string, value: string) {
+        if(value === this.configuration[key]){
+            return;
+        }
+
         this.systemRuntime.updateConfiguration(key, value);
     }
 }
