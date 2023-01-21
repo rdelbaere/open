@@ -3,5 +3,5 @@ export const wallpapersValues = [
 ];
 
 export const themesValues = [
-    'dark', 'light',
+    'dark', 'light', 'snake', 'green', 'pink',
 ];
