@@ -11,6 +11,11 @@ import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui
     styleUrls: ['./app-center.component.scss']
 })
 export class AppCenterComponent implements ConfigureWindow {
+    readonly actions = {
+        install: `installé`,
+        uninstall: 'désinstallé',
+    };
+
     apps: App[];
     processing: App | null;
     filter = "";
@@ -25,26 +30,35 @@ export class AppCenterComponent implements ConfigureWindow {
         return { minWidth: 600, minHeight: 400 };
     }
 
-    // TODO - Manage errors
     install(app: App): void {
         this.processing = app;
-        this.appCenter.install(app).subscribe(() => {
-            this.notificationCenter.dispatch({
-                type: NotificationType.success,
-                message: "L'application " + app.name + " à été installée",
-            });
-            this.processing = null;
+        this.appCenter.install(app).subscribe({
+            next: () => this.onSuccess(app, this.actions.install),
+            error: () => this.onError(app, this.actions.install),
         });
     }
 
     uninstall(app: App): void {
         this.processing = app;
-        this.appCenter.uninstall(app).subscribe(() => {
-            this.notificationCenter.dispatch({
-                type: NotificationType.success,
-                message: "L'application " + app.name + " à été désinstallée",
-            });
-            this.processing = null;
+        this.appCenter.uninstall(app).subscribe({
+            next: () => this.onSuccess(app, this.actions.uninstall),
+            error: () => this.onError(app, this.actions.uninstall),
         });
+    }
+
+    private onSuccess(app: App, action: string) {
+        this.notificationCenter.dispatch({
+            type: NotificationType.success,
+            message: `L'application ${app.name} a été ${action}`,
+        });
+        this.processing = null;
+    }
+
+    private onError(app: App, action: string) {
+        this.notificationCenter.dispatch({
+            type: NotificationType.error,
+            message: `L'application ${app.name} n'a pas pu être ${action}`,
+        });
+        this.processing = null;
     }
 }
