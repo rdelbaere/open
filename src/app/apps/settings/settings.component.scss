@@ -2,9 +2,12 @@
 
 .settings{
     @include window-default-container;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
     header{
-        border-bottom: 1px solid var(--system-color-light);
+        box-shadow: var(--system-shadow);
         padding: 10px;
         display: flex;
         align-items: center;
@@ -26,5 +29,8 @@
 
     .settings-view{
         padding: 10px;
+        flex: 1;
+        overflow: auto;
+        @include window-scrollbar;
     }
 }

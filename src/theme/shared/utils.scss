@@ -17,7 +17,10 @@
     overflow: auto;
     background-color: var(--system-color-primary);
     color: var(--system-color-light);
+    @include window-scrollbar;
+}
 
+@mixin window-scrollbar{
     &::-webkit-scrollbar{
         width: 8px;
         height: 8px;
