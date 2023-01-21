@@ -3,6 +3,7 @@ import { CalculatorComponent } from "../../../apps/calculator/calculator.compone
 import { AppCenterComponent } from "../../../apps/app-center/app-center.component";
 import { SettingsComponent } from "../../../apps/settings/settings.component";
 import { PanicComponent } from "../../../apps/panic/panic.component";
+import { FileExplorerComponent } from "../../../apps/file-explorer/file-explorer.component";
 
 export interface App{
     id: number;
@@ -19,8 +20,9 @@ type AppRuntime = {
 };
 
 export const AppRuntimes: AppRuntime = {
-    calculator: CalculatorComponent,
     appcenter: AppCenterComponent,
+    calculator: CalculatorComponent,
+    fileExplorer: FileExplorerComponent,
     panic: PanicComponent,
     settings: SettingsComponent,
 }
