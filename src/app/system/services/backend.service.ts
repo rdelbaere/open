@@ -15,14 +15,20 @@ export class BackendService {
 
     constructor(private http: HttpClient){}
 
+    get(endpoint: string, options: BackendOptions = {}): Observable<BackendResponse>  {
+        const request = this.prepareRequest(endpoint, options);
+        return this.http.get<BackendResponse>(request.url, request.options);
+    }
+
     post(endpoint: string, payload: any = {}, options: BackendOptions = {}): Observable<BackendResponse> {
         const request = this.prepareRequest(endpoint, options);
         return this.http.post<BackendResponse>(request.url, payload, request.options);
     }
 
-    get(endpoint: string, options: BackendOptions = {}) {
+    patch(endpoint: string, payload: any, options: BackendOptions = {}): Observable<BackendResponse>  {
         const request = this.prepareRequest(endpoint, options);
-        return this.http.get<BackendResponse>(request.url, request.options);
+        request.options.headers = request.options.headers.append('Content-Type', 'application/merge-patch+json');
+        return this.http.patch<BackendResponse>(request.url, payload, request.options);
     }
 
     private prepareRequest(endpoint: string, options: BackendOptions = {}): BackendRequest {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SystemRuntime } from "../../services/system.runtime";
+import { SystemConstants } from "../../interfaces/core/system";
 
 @Component({
   selector: 'app-desktop',
@@ -16,6 +17,6 @@ export class DesktopComponent {
     }
 
     buildWallpaper(): string {
-        return `url('/assets/images/system/wallpaper/${this.wallpaper}')`;
+        return `url('${SystemConstants.wallpaperPath}${this.wallpaper}')`;
     }
 }
