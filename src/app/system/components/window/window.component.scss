@@ -11,14 +11,15 @@
         display: flex;
         background-color: var(--system-color-primary);
         color: var(--system-color-light);
+        border-bottom: solid 1px var(--system-overlay);
 
         &__name{
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 10px;
             flex: 1;
             cursor: move;
-            padding: 5px;
+            padding: 7px;
 
             mat-icon{
                 font-size: 1.2rem;
@@ -28,10 +29,9 @@
         &__actions{
             display: flex;
             align-items: center;
-            gap: 5px;
 
             mat-icon{
-                padding: 5px;
+                padding: 7px 8px;
                 font-size: 1.2rem;
                 cursor: pointer;
 

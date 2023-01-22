@@ -21,7 +21,7 @@
 
     .launcher{
         position: absolute;
-        top: calc(100% + 13px); // TODO - Remove tricky position
+        top: calc(100% + 10px);
         left: 10px;
         border-radius: 0 10px 10px 10px;
         box-shadow: var(--system-shadow);
@@ -29,6 +29,7 @@
         height: 400px;
         background-color: var(--system-color-primary);
         z-index: 100;
+        overflow: hidden;
 
         .launcher-content{
             display: flex;

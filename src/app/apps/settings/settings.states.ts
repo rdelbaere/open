@@ -30,7 +30,7 @@ export const settingsStates: Array<State> = [
         name: 'about',
         component: AboutComponent,
         extra: {
-            label: 'A propos',
+            label: 'À propos',
             icon: 'info',
         },
     },

@@ -33,9 +33,9 @@
 
         .separator{
             align-self: stretch;
-            width: 3px;
+            width: 2px;
             background-color: var(--system-color-secondary);
-            margin: 5px 15px 5px 10px;
+            margin: 5px 10px;
         }
 
         .path-locator{
@@ -44,25 +44,28 @@
             li{
                 display: flex;
                 align-items: center;
-                padding-left: 3px;
-                margin: 0 3px 0 0;
+                margin: 0;
                 cursor: pointer;
+
+                span {
+                    padding: 2px 7px;
+
+                    &:hover{
+                        background-color: var(--system-overlay);
+                        border-radius: 5px;
+                    }
+                }
 
                &:not(:last-child):after{
                    content: '\e5cc';
                    font-family: "Material Icons", sans-serif;
-                   font-size: 1.6rem;
-                   margin-left: 3px;
+                   font-size: 1.35rem;
                    letter-spacing: 1px;
-                   background-color: var(--system-color-primary);
                    height: 100%;
+                   cursor: default;
                }
                 &:last-child{
                     padding-right: 3px;
-                }
-
-                &:hover{
-                    background-color: var(--system-overlay);
                 }
             }
         }
