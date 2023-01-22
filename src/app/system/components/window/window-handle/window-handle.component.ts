@@ -13,8 +13,7 @@ export class WindowHandleComponent{
     @Output() resized: EventEmitter<Size> = new EventEmitter<Size>();
     private cursorStartPosition: Position;
     private windowStartSize: Size;
-    private onResize: boolean = false;
-
+    private onResize = false;
 
     startResize($event: MouseEvent) {
         this.cursorStartPosition = {
