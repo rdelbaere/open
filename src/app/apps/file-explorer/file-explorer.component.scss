@@ -38,13 +38,15 @@
 
         .separator{
             align-self: stretch;
-            width: 2px;
             background-color: var(--system-color-secondary);
             margin: 5px 10px;
+            flex: 0 0 2px;
         }
 
         .path-locator{
             align-items: center;
+            overflow: auto;
+            @include window-scrollbar;
 
             li{
                 display: flex;
