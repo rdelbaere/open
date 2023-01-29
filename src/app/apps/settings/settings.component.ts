@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { settingsStates } from "./settings.states";
 import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui/window";
 import { StateNavigationService } from "../../sdk/state-navigation/state-navigation.service";

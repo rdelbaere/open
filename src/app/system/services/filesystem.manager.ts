@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CoreSystemService } from "./util/core-system.service";
 import { BackendService } from "./backend.service";
-import { Directory, Filesystem } from "../interfaces/core/filesystem";
+import { Filesystem } from "../interfaces/core/filesystem";
 import { Observable, ReplaySubject } from "rxjs";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
 

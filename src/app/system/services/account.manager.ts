@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
     providedIn: 'root'
 })
 export class AccountManager {
-    private static storageKey: string = 'open-session';
+    private static storageKey = 'open-session';
     private static session: AccountSession|null;
 
     constructor(

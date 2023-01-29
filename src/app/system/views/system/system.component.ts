@@ -8,7 +8,7 @@ import { SystemRuntime } from "../../services/system.runtime";
     styleUrls: ['./system.component.scss']
 })
 export class SystemComponent {
-    booted: boolean = false;
+    booted = false;
 
     constructor(private accountManager: AccountManager, private systemRuntime: SystemRuntime) {
         this.start();

@@ -12,7 +12,7 @@ import { AccountManager } from "../../../../services/account.manager";
 export class LauncherComponent {
     @ViewChild('panel') panelElement: ElementRef;
     @ViewChild('panelTrigger') panelTriggerElement: ElementRef;
-    panelVisible: boolean = false;
+    panelVisible = false;
 
     installedApps: App[];
 

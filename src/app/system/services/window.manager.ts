@@ -37,7 +37,7 @@ export class WindowManager{
         this.dispatch();
     }
 
-    focus(window: Window, withMinimize: boolean = false){
+    focus(window: Window, withMinimize = false){
         const onTop = this.windows.indexOf(window) === this.windows.length - 1;
         const minimized = window.minimized;
 
