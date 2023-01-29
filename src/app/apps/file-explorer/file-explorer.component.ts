@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FilesystemManager } from "../../system/services/filesystem.manager";
 import { Directory, Filesystem, Resource } from "../../system/interfaces/core/filesystem";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
+import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui/window";
 
 @Component({
-  selector: 'app-apps-file-explorer',
-  templateUrl: './file-explorer.component.html',
-  styleUrls: ['./file-explorer.component.scss']
+    selector: 'app-apps-file-explorer',
+    templateUrl: './file-explorer.component.html',
+    styleUrls: ['./file-explorer.component.scss']
 })
-export class FileExplorerComponent {
+export class FileExplorerComponent implements ConfigureWindow {
     filesystem: Filesystem;
     currentDirectory: Directory;
     history: Directory[] = [];
@@ -16,10 +17,17 @@ export class FileExplorerComponent {
     constructor(private filesystemManager: FilesystemManager) {
         this.filesystemManager.observe().subscribe(filesystem => {
             this.filesystem = filesystem;
-             if (!this.currentDirectory) {
-                 this.navigateRoot();
-             }
+            if (!this.currentDirectory) {
+                this.navigateRoot();
+            }
         });
+    }
+
+    configureWindow(): WindowConfiguration {
+        return {
+            minWidth: 500,
+            minHeight: 300,
+        };
     }
 
     getIcon(resource: Resource): string {
