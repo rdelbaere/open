@@ -3,7 +3,7 @@ import { Size } from "./size";
 import { Process } from "../core/process";
 
 export interface Window{
-    config: ResolvedWindowConfiguration
+    config: Required<WindowConfiguration>
     position: Position;
     size: Size;
     maximized: boolean;
@@ -36,13 +36,7 @@ export interface WindowConfiguration{
     minHeight?: number;
 }
 
-// TODO - Find an alternative to not duplicate this interface
-export interface ResolvedWindowConfiguration{
-    minWidth: number;
-    minHeight: number;
-}
-
-export class DefaultWindowConfiguration implements ResolvedWindowConfiguration{
+export class DefaultWindowConfiguration implements Required<WindowConfiguration>{
     minWidth = 300;
     minHeight = 100;
 }
