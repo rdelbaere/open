@@ -6,9 +6,9 @@ export interface Filesystem {
 export interface Resource {
     name: string;
     path: string;
-    parent: Resource;
+    parent: Directory;
 }
 
 export interface Directory extends Resource {
-    childs: Array<Resource>
+    childs: Resource[];
 }

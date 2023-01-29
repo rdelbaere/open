@@ -1,24 +1,29 @@
-<div class="file-explorer">
+<section class="file-explorer">
     <header>
         <ul class="header-navigation">
-            <li>
+            <li (click)="navigateBack()" [class.disabled]="!history.length">
                 <mat-icon>arrow_back</mat-icon>
             </li>
-            <li>
+            <li (click)="navigateRoot()">
                 <mat-icon>home</mat-icon>
-            </li>
-            <li>
-                <mat-icon>arrow_forward</mat-icon>
             </li>
         </ul>
 
         <div class="separator"></div>
 
         <ol class="path-locator">
-            <li><span>Fichiers</span></li>
-            <li><span>Musique</span></li>
-            <li><span>Rock</span></li>
-            <li><span>ACDC</span></li>
+            <li *ngFor="let directory of currentDirectoryPath()">
+                <span (click)="navigate(directory)">
+                    {{ directory.name !== '' ? directory.name : 'Fichiers' }}
+                </span>
+            </li>
         </ol>
     </header>
-</div>
+
+    <div class="explorer-container" *ngIf="currentDirectory">
+        <article *ngFor="let resource of currentDirectory.childs" (dblclick)="open(resource)">
+            <mat-icon>{{ getIcon(resource) }}</mat-icon>
+            {{ resource.name }}
+        </article>
+    </div>
+</section>

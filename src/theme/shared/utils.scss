@@ -1,7 +1,4 @@
-@mixin logo-font{
-    font-family: 'Gruppo', cursive;
-    letter-spacing: 8px;
-}
+// ----- Generic -----
 
 @mixin reflect($content){
     content: $content;
@@ -11,6 +8,14 @@
     mask-image: linear-gradient(transparent 40%, white 100%);
     filter: blur(2px);
 }
+
+@mixin icon-size($size){
+    font-size: $size;
+    width: $size;
+    height: $size;
+}
+
+// ----- System container -----
 
 @mixin window-default-container{
     height: 100%;
@@ -45,4 +50,11 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+}
+
+// ----- Branding -----
+
+@mixin logo-font{
+    font-family: 'Gruppo', cursive;
+    letter-spacing: 8px;
 }

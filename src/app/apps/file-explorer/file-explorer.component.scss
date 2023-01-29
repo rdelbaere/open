@@ -25,6 +25,11 @@
                 display: flex;
                 align-items: center;
 
+                &.disabled{
+                    pointer-events: none;
+                    opacity: 0.5;
+                }
+
                 &:hover{
                     background-color: var(--system-overlay);
                 }
@@ -49,23 +54,52 @@
 
                 span {
                     padding: 2px 7px;
+                }
 
-                    &:hover{
-                        background-color: var(--system-overlay);
-                        border-radius: 5px;
+                &:last-child{
+                    cursor: default;
+                }
+
+                &:not(:last-child){
+                    &:after{
+                       content: '\e5cc';
+                       font-family: "Material Icons", sans-serif;
+                       font-size: 1.35rem;
+                       height: 100%;
+                       cursor: default;
+                    }
+
+                    span:hover{
+                       background-color: var(--system-overlay);
+                       border-radius: 5px;
                     }
                 }
+            }
+        }
+    }
 
-               &:not(:last-child):after{
-                   content: '\e5cc';
-                   font-family: "Material Icons", sans-serif;
-                   font-size: 1.35rem;
-                   height: 100%;
-                   cursor: default;
-               }
-                &:last-child{
-                    padding-right: 3px;
-                }
+    .explorer-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 20px;
+        padding: 20px;
+
+        article{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            user-select: none;
+
+            mat-icon{
+                @include icon-size(2.5rem);
+            }
+
+            &:hover{
+                background-color: var(--system-overlay);
             }
         }
     }
