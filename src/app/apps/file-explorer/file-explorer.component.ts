@@ -25,7 +25,7 @@ export class FileExplorerComponent implements ConfigureWindow {
 
     configureWindow(): WindowConfiguration {
         return {
-            // minWidth: 500,
+            minWidth: 500,
             minHeight: 300,
         };
     }

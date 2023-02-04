@@ -20,10 +20,21 @@
         </ol>
     </header>
 
-    <div class="explorer-container" *ngIf="currentDirectory">
-        <article *ngFor="let resource of currentDirectory.childs" (dblclick)="open(resource)">
-            <mat-icon>{{ getIcon(resource) }}</mat-icon>
-            {{ resource.name }}
-        </article>
+    <div class="explorer-container" [sdkContextMenuTrigger]="contextMenu">
+        <ng-container *ngIf="currentDirectory">
+            <article *ngFor="let resource of currentDirectory.childs" (dblclick)="open(resource)">
+                <mat-icon>{{ getIcon(resource) }}</mat-icon>
+                {{ resource.name }}
+            </article>
+        </ng-container>
     </div>
+
+    <sdk-context-menu #contextMenu>
+        <sdk-context-menu-item icon="folder">
+            Nouveau dossier
+        </sdk-context-menu-item>
+        <sdk-context-menu-item icon="upload">
+            Importer un fichier
+        </sdk-context-menu-item>
+    </sdk-context-menu>
 </section>
