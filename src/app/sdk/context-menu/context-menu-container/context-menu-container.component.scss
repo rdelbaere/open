@@ -1,0 +1,12 @@
+.context-menu{
+    position: fixed;
+    z-index: 1;
+    min-width: 200px;
+    max-width: 400px;
+    background-color: var(--system-color-primary);
+    box-shadow: var(--system-shadow);
+    display: none;
+    &.opened{
+        display: block;
+    }
+}

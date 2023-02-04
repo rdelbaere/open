@@ -1,7 +1,15 @@
 <div class="activity">
-    <div class="process" *ngFor="let window of windows" (click)="focus(window)">
-        <mat-icon [inline]="true" [ngStyle]="{'color': window.process.activity.icon.color}">
-            {{ window.process.activity.icon.name }}
-        </mat-icon>
-    </div>
+    <ng-container *ngFor="let window of windows">
+        <div class="process" [sdkContextMenuTrigger]="activityContextMenu" (click)="focus(window)">
+            <mat-icon [inline]="true" [ngStyle]="{'color': window.process.activity.icon.color}">
+                {{ window.process.activity.icon.name }}
+            </mat-icon>
+        </div>
+
+        <sdk-context-menu #activityContextMenu>
+            <sdk-context-menu-item icon="close" (selected)="closeWindow(window)">
+                Fermer l'application
+            </sdk-context-menu-item>
+        </sdk-context-menu>
+    </ng-container>
 </div>

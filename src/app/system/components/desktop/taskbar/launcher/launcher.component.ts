@@ -30,6 +30,7 @@ export class LauncherComponent {
     }
 
     setupPanelAutoclose(){
+        // TODO - Review this autoclose
         this.renderer.listen('window', 'click', e => {
             if(e.target != this.panelElement.nativeElement && e.target != this.panelTriggerElement.nativeElement){
                 this.closePanel();

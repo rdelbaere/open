@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { MaterialModule } from "./material.module";
+import { ContextMenuModule } from "../../sdk/context-menu/context-menu.module";
 
 import { LoginComponent } from "../views/login/login.component";
 import { SystemComponent } from "../views/system/system.component";
@@ -11,19 +16,13 @@ import { ClockComponent } from "../components/desktop/taskbar/clock/clock.compon
 import { ActivityComponent } from "../components/desktop/taskbar/activity/activity.component";
 import { LauncherComponent } from "../components/desktop/taskbar/launcher/launcher.component";
 import { ShortcutComponent } from "../components/desktop/shortcut/shortcut.component";
-
 import { WindowComponent } from "../components/window/window.component";
 import { WindowHandleComponent } from "../components/window/window-handle/window-handle.component";
 import { WindowRuntimeComponent } from '../components/window/window-runtime/window-runtime.component';
-
-import { MaterialModule } from "./material.module";
-import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
 import { LiveFeedComponent } from "../components/notification/live-feed/live-feed.component";
 import { NotificationComponent } from "../components/notification/notification/notification.component";
 import { BootLoaderComponent } from "../components/boot-loader/boot-loader.component";
 import { PanicComponent } from "../views/panic/panic.component";
-import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -46,10 +45,11 @@ import { RouterModule } from "@angular/router";
     ],
     imports: [
         CommonModule,
-        MaterialModule,
         HttpClientModule,
         ReactiveFormsModule,
-        RouterModule
+        RouterModule,
+        MaterialModule,
+        ContextMenuModule
     ]
 })
 export class KernelModule { }
