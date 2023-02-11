@@ -3,6 +3,8 @@ import { FilesystemManager } from "../../system/services/filesystem.manager";
 import { Directory, Filesystem, Resource } from "../../system/interfaces/core/filesystem";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
 import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui/window";
+import { CreateFolderComponent } from "./actions/create-folder/create-folder.component";
+import { DialogService } from "../../sdk/dialog/dialog.service";
 
 @Component({
     selector: 'app-apps-file-explorer',
@@ -14,7 +16,7 @@ export class FileExplorerComponent implements ConfigureWindow {
     currentDirectory: Directory;
     history: Directory[] = [];
 
-    constructor(private filesystemManager: FilesystemManager) {
+    constructor(private dialogService: DialogService, private filesystemManager: FilesystemManager) {
         this.filesystemManager.observe().subscribe(filesystem => {
             this.filesystem = filesystem;
             if (!this.currentDirectory) {
@@ -67,5 +69,12 @@ export class FileExplorerComponent implements ConfigureWindow {
 
     currentDirectoryPath(): Directory[] {
         return FilesystemUtils.getPathAsArray(this.currentDirectory) as Directory[];
+    }
+
+    /* ----- Context menu actions ----- */
+
+    createFolderAction() {
+        // TODO - Improve dialog behavior
+        this.dialogService.open(CreateFolderComponent);
     }
 }

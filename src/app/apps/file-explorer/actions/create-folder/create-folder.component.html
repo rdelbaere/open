@@ -1,0 +1,17 @@
+<form [formGroup]="folderForm" (ngSubmit)="create()">
+    <h2 mat-dialog-title>Créer un dossier</h2>
+
+    <mat-dialog-content>
+        <mat-form-field appearance="outline" color="accent">
+            <input matInput placeholder="Nom du dossier" formControlName="name" autocomplete="off">
+            <mat-error *ngIf="folderForm.controls.name.invalid">
+                Vous devez saisir un nom
+            </mat-error>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button type="button" mat-button mat-dialog-close>Annuler</button>
+        <button mat-flat-button color="accent">Créer</button>
+    </mat-dialog-actions>
+</form>
