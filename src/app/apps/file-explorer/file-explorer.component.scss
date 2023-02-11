@@ -2,6 +2,9 @@
 
 .file-explorer{
     @include window-default-container;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
     header{
         display: flex;
@@ -81,11 +84,13 @@
     }
 
     .explorer-container{
+        @include window-scrollbar;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
         gap: 20px;
         padding: 20px;
-        height: 100%;
+        flex: 1;
+        overflow: auto;
         align-content: start;
 
         article{

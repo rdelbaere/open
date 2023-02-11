@@ -4,6 +4,7 @@ import { BackendService } from "./backend.service";
 import { Directory, Filesystem } from "../interfaces/core/filesystem";
 import { Observable, ReplaySubject } from "rxjs";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,13 @@ export class FilesystemManager extends CoreSystemService {
     }
 
     createDirectory(directory: Partial<Directory>) {
-        console.log(directory);
+        const uri = `/filesystems/${this.filesystem.id}/resource`;
+        return this.backendService.post(uri, {
+            isDirectory: true,
+            ...directory
+        }).pipe(
+            map(response => this.update(response.data))
+        );
     }
 
     private update(filesystem: Filesystem) {

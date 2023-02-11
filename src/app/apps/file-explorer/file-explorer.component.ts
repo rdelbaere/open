@@ -21,6 +21,8 @@ export class FileExplorerComponent implements ConfigureWindow {
             this.filesystem = filesystem;
             if (!this.currentDirectory) {
                 this.navigateRoot();
+            } else {
+                this.refresh();
             }
         });
     }
@@ -69,6 +71,14 @@ export class FileExplorerComponent implements ConfigureWindow {
 
     currentDirectoryPath(): Directory[] {
         return FilesystemUtils.getPathAsArray(this.currentDirectory) as Directory[];
+    }
+
+    private refresh() {
+        this.currentDirectory = FilesystemUtils.refreshDirectory(this.filesystem, this.currentDirectory);
+
+        for (const i in this.history) {
+            this.history[i] = FilesystemUtils.refreshDirectory(this.filesystem, this.history[i]);
+        }
     }
 
     /* ----- Context menu actions ----- */

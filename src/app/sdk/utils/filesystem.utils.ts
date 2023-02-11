@@ -1,4 +1,4 @@
-import { Directory, Resource } from "../../system/interfaces/core/filesystem";
+import { Directory, Filesystem, Resource } from "../../system/interfaces/core/filesystem";
 
 export class FilesystemUtils {
     static isDirectory(resource: Resource): boolean {
@@ -23,5 +23,21 @@ export class FilesystemUtils {
                 this.restoreTree(child as Directory);
             }
         }
+    }
+
+    static refreshDirectory(filesystem: Filesystem, directory: Directory): Directory {
+        const path = directory.path.split('/');
+        let selectedDirectory = filesystem.rootDirectory;
+
+        while (path.length > 0) {
+            const subpath = path.shift();
+            for (const child of selectedDirectory.childs) {
+                if (subpath == child.name) {
+                    selectedDirectory = child;
+                }
+            }
+        }
+
+        return selectedDirectory;
     }
 }
