@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CoreSystemService } from "./util/core-system.service";
 import { BackendService } from "./backend.service";
-import { Filesystem } from "../interfaces/core/filesystem";
+import { Directory, Filesystem } from "../interfaces/core/filesystem";
 import { Observable, ReplaySubject } from "rxjs";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
 
@@ -27,6 +27,10 @@ export class FilesystemManager extends CoreSystemService {
 
     observe(): Observable<Filesystem> {
         return this.filesystemSubject.asObservable();
+    }
+
+    createDirectory(directory: Partial<Directory>) {
+        console.log(directory);
     }
 
     private update(filesystem: Filesystem) {

@@ -75,6 +75,8 @@ export class FileExplorerComponent implements ConfigureWindow {
 
     createFolderAction() {
         // TODO - Improve dialog behavior
-        this.dialogService.open(CreateFolderComponent);
+        this.dialogService.open(CreateFolderComponent, {
+            path: this.currentDirectory.path,
+        });
     }
 }
