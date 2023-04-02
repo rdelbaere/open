@@ -4,6 +4,7 @@ import { FilesystemManager } from "../../../../system/services/filesystem.manage
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { NotificationCenter } from "../../../../system/services/notification.center";
 import { NotificationType } from "../../../../system/interfaces/core/notification";
+import { BackendError } from "../../../../system/interfaces/backend/backend-error";
 
 @Component({
     selector: 'app-apps-file-explorer-actions-create-folder',
@@ -14,6 +15,8 @@ export class CreateFolderComponent {
     folderForm = new FormGroup({
         name: new FormControl<string>('', [Validators.required])
     });
+    loading = false;
+    backendError: BackendError;
 
     constructor(
         private filesystemManager: FilesystemManager,
@@ -27,7 +30,7 @@ export class CreateFolderComponent {
             return;
         }
 
-        // TODO - Manage loading & exceptions
+        this.loading = true;
         this.filesystemManager.createDirectory({
             name: this.folderForm.controls.name.value ?? '',
             path: this.payload.path,
@@ -39,6 +42,10 @@ export class CreateFolderComponent {
                     message: 'Le dossier a bien été créé',
                 });
             },
+            error: err => {
+                this.backendError = err;
+                this.loading = false;
+            }
         });
     }
 }

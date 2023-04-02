@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { SystemRuntime } from "./system/services/system.runtime";
 import { SystemConstants } from "./system/interfaces/core/system";
 
@@ -8,16 +8,19 @@ import { SystemConstants } from "./system/interfaces/core/system";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    themeClassPrefix = SystemConstants.themeClassPrefix;
     theme: string;
 
-    constructor(private systemRuntime: SystemRuntime) {
+    constructor(
+        private renderer: Renderer2,
+        private systemRuntime: SystemRuntime
+    ) {
         this.loadTheme();
     }
 
     loadTheme(){
         this.systemRuntime.observeConfiguration().subscribe(configuration => {
             this.theme = configuration.theme;
+            this.renderer.addClass(document.body, SystemConstants.themeClassPrefix + this.theme);
         });
     }
 }

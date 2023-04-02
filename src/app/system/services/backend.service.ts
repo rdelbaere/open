@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { BackendResponse } from "../interfaces/backend/backend-response";
 import { BackendOptions, DefaultBackendOptions } from "../interfaces/backend/backend-options";
 import { BackendRequest } from "../interfaces/backend/backend-request";
 import { AccountManager } from "./account.manager";
+import { catchError } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -17,18 +18,21 @@ export class BackendService {
 
     get(endpoint: string, options: BackendOptions = {}): Observable<BackendResponse>  {
         const request = this.prepareRequest(endpoint, options);
-        return this.http.get<BackendResponse>(request.url, request.options);
+        const observable = this.http.get<BackendResponse>(request.url, request.options);
+        return this.prepareObservable(observable);
     }
 
     post(endpoint: string, payload: any = {}, options: BackendOptions = {}): Observable<BackendResponse> {
         const request = this.prepareRequest(endpoint, options);
-        return this.http.post<BackendResponse>(request.url, payload, request.options);
+        const observable = this.http.post<BackendResponse>(request.url, payload, request.options);
+        return this.prepareObservable(observable);
     }
 
-    patch(endpoint: string, payload: any, options: BackendOptions = {}): Observable<BackendResponse>  {
+    patch(endpoint: string, payload: any, options: BackendOptions = {}): Observable<BackendResponse> {
         const request = this.prepareRequest(endpoint, options);
         request.options.headers = request.options.headers.append('Content-Type', 'application/merge-patch+json');
-        return this.http.patch<BackendResponse>(request.url, payload, request.options);
+        const observable = this.http.patch<BackendResponse>(request.url, payload, request.options);
+        return this.prepareObservable(observable);
     }
 
     private prepareRequest(endpoint: string, options: BackendOptions = {}): BackendRequest {
@@ -61,5 +65,16 @@ export class BackendService {
 
     private resolveOptions(options: BackendOptions): BackendOptions {
         return {...DefaultBackendOptions, ...options};
+    }
+
+    private prepareObservable(observable: Observable<BackendResponse>): Observable<BackendResponse> {
+        return observable.pipe(
+            catchError(err => {
+                return throwError({
+                    status: false,
+                    message: err.error.message ?? 'Une erreur est survenue, veuillez réessayer ultérieurement'
+                });
+            }),
+        );
     }
 }

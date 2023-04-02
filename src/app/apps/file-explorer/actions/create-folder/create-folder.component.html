@@ -4,14 +4,17 @@
     <mat-dialog-content>
         <mat-form-field appearance="outline" color="accent">
             <input matInput placeholder="Nom du dossier" formControlName="name" autocomplete="off">
-            <mat-error *ngIf="folderForm.controls.name.invalid">
+            <mat-error>
                 Vous devez saisir un nom
             </mat-error>
         </mat-form-field>
+        <p *ngIf="backendError" class="form-error">
+            {{ backendError.message }}
+        </p>
     </mat-dialog-content>
 
-    <mat-dialog-actions align="end">
-        <button type="button" mat-button mat-dialog-close>Annuler</button>
-        <button mat-flat-button color="accent">Créer</button>
+    <mat-dialog-actions align="center" [class.loader]="loading">
+        <button type="button" mat-button mat-dialog-close [disabled]="loading">Annuler</button>
+        <button mat-flat-button color="accent" [disabled]="loading">Créer</button>
     </mat-dialog-actions>
 </form>
