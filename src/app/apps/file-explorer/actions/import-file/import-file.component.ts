@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { BackendError } from "../../../../system/interfaces/backend/backend-error";
 import { NotificationType } from "../../../../system/interfaces/core/notification";
-import { FilesystemUtils } from "../../../../sdk/utils/filesystem.utils";
+import { NativeFileUtils } from "../../../../sdk/utils/native-file.utils";
 
 @Component({
     selector: 'app-apps-file-explorer-actions-import-file',
@@ -38,7 +38,7 @@ export class ImportFileComponent {
         this.fileSource = input.files[0];
         console.log(this.fileSource);
         if (!this.fileForm.value.name) {
-            this.fileForm.controls.name.setValue(FilesystemUtils.removeExtension(this.fileSource));
+            this.fileForm.controls.name.setValue(NativeFileUtils.removeExtension(this.fileSource));
         }
     }
 
@@ -69,6 +69,6 @@ export class ImportFileComponent {
     }
 
     getFileExtension() {
-        return FilesystemUtils.guessExtension(this.fileSource);
+        return NativeFileUtils.guessExtension(this.fileSource);
     }
 }
