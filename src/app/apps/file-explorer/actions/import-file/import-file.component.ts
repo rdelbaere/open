@@ -37,9 +37,7 @@ export class ImportFileComponent {
 
         this.fileSource = input.files[0];
         console.log(this.fileSource);
-        if (!this.fileForm.value.name) {
-            this.fileForm.controls.name.setValue(NativeFileUtils.removeExtension(this.fileSource));
-        }
+        this.fileForm.controls.name.setValue(NativeFileUtils.removeExtension(this.fileSource));
     }
 
     import() {
