@@ -3,6 +3,9 @@
 
     <mat-dialog-content>
         <input type="file" formControlName="file" (change)="handleFile($event)">
+        <mat-error *ngIf="fileForm.controls.file.touched && fileForm.controls.file.invalid">
+            Vous devez séléctionner un fichier
+        </mat-error>
 
         <mat-form-field appearance="outline" color="accent">
             <input matInput placeholder="Nom du fichier" formControlName="name" autocomplete="off">
