@@ -102,6 +102,8 @@
             cursor: pointer;
             border-radius: 5px;
             user-select: none;
+            word-break: break-all;
+            text-align: center;
 
             mat-icon{
                 @include icon-size(2.5rem);
