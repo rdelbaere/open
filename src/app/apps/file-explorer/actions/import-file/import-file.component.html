@@ -6,6 +6,7 @@
 
         <mat-form-field appearance="outline" color="accent">
             <input matInput placeholder="Nom du fichier" formControlName="name" autocomplete="off">
+            <span matTextSuffix *ngIf="fileSource">.{{ getFileExtension() }}</span>
             <mat-error>
                 Vous devez saisir un nom
             </mat-error>
