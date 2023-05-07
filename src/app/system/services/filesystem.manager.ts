@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CoreSystemService } from "./util/core-system.service";
 import { BackendService } from "./backend.service";
-import { Directory, Filesystem } from "../interfaces/core/filesystem";
+import { DirectoryNode, FileNode, Filesystem } from "../interfaces/core/filesystem";
 import { Observable, ReplaySubject } from "rxjs";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
-import { map } from "rxjs/operators";
+import { map, mergeMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +30,26 @@ export class FilesystemManager extends CoreSystemService {
         return this.filesystemSubject.asObservable();
     }
 
-    createDirectory(directory: Partial<Directory>) {
+    createDirectory(directory: Partial<DirectoryNode>) {
         const uri = `/filesystems/${this.filesystem.id}/resource`;
         return this.backendService.post(uri, {
             isDirectory: true,
             ...directory
         }).pipe(
+            map(response => this.update(response.data))
+        );
+    }
+
+    importFile(fileNode: Pick<FileNode, "path"|"name"|"file">) {
+        return this.backendService.preloadFile(fileNode.file).pipe(
+            mergeMap(response => {
+                const uri = `/filesystems/${this.filesystem.id}/resource`;
+                return this.backendService.post(uri, {
+                    isDirectory: false,
+                    tempfile: response.data,
+                    ...fileNode
+                });
+            }),
             map(response => this.update(response.data))
         );
     }

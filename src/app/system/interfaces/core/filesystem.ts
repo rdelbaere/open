@@ -3,12 +3,16 @@ export interface Filesystem {
     rootDirectory: any;
 }
 
-export interface Resource {
+export interface ResourceNode {
     name: string;
     path: string;
-    parent: Directory;
+    parent: DirectoryNode;
 }
 
-export interface Directory extends Resource {
-    childs: Resource[];
+export interface DirectoryNode extends ResourceNode {
+    childs: ResourceNode[];
+}
+
+export interface FileNode extends ResourceNode {
+    file: File;
 }

@@ -6,11 +6,13 @@ import { MaterialModule } from "../../system/modules/material.module";
 import { ContextMenuModule } from "../../sdk/context-menu/context-menu.module";
 import { CreateFolderComponent } from './actions/create-folder/create-folder.component';
 import { DialogModule } from "../../sdk/dialog/dialog.module";
+import { ImportFileComponent } from './actions/import-file/import-file.component';
 
 @NgModule({
     declarations: [
         FileExplorerComponent,
         CreateFolderComponent,
+        ImportFileComponent,
     ],
     imports: [
         CommonModule,

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FilesystemManager } from "../../system/services/filesystem.manager";
-import { Directory, Filesystem, Resource } from "../../system/interfaces/core/filesystem";
+import { DirectoryNode, Filesystem, ResourceNode } from "../../system/interfaces/core/filesystem";
 import { FilesystemUtils } from "../../sdk/utils/filesystem.utils";
 import { ConfigureWindow, WindowConfiguration } from "../../system/interfaces/ui/window";
 import { CreateFolderComponent } from "./actions/create-folder/create-folder.component";
 import { DialogService } from "../../sdk/dialog/dialog.service";
+import { ImportFileComponent } from "./actions/import-file/import-file.component";
 
 @Component({
     selector: 'app-apps-file-explorer',
@@ -13,8 +14,8 @@ import { DialogService } from "../../sdk/dialog/dialog.service";
 })
 export class FileExplorerComponent implements ConfigureWindow {
     filesystem: Filesystem;
-    currentDirectory: Directory;
-    history: Directory[] = [];
+    currentDirectory: DirectoryNode;
+    history: DirectoryNode[] = [];
 
     constructor(private dialogService: DialogService, private filesystemManager: FilesystemManager) {
         this.filesystemManager.observe().subscribe(filesystem => {
@@ -34,7 +35,7 @@ export class FileExplorerComponent implements ConfigureWindow {
         };
     }
 
-    getIcon(resource: Resource): string {
+    getIcon(resource: ResourceNode): string {
         if (FilesystemUtils.isDirectory(resource)) {
             return 'folder';
         }
@@ -42,13 +43,13 @@ export class FileExplorerComponent implements ConfigureWindow {
         return 'description';
     }
 
-    open(resource: Resource) {
+    open(resource: ResourceNode) {
         if (FilesystemUtils.isDirectory(resource)) {
-            this.navigate(resource as Directory);
+            this.navigate(resource as DirectoryNode);
         }
     }
 
-    navigate(directory: Directory) {
+    navigate(directory: DirectoryNode) {
         if (directory === this.currentDirectory) {
             return;
         }
@@ -69,8 +70,8 @@ export class FileExplorerComponent implements ConfigureWindow {
         this.currentDirectory = this.filesystem.rootDirectory;
     }
 
-    currentDirectoryPath(): Directory[] {
-        return FilesystemUtils.getPathAsArray(this.currentDirectory) as Directory[];
+    currentDirectoryPath(): DirectoryNode[] {
+        return FilesystemUtils.getPathAsArray(this.currentDirectory) as DirectoryNode[];
     }
 
     private refresh() {
@@ -87,6 +88,13 @@ export class FileExplorerComponent implements ConfigureWindow {
         // TODO - Improve dialog behavior
         this.dialogService.open(CreateFolderComponent, {
             path: this.currentDirectory.path,
+        });
+    }
+
+    // TODO - Improve UX, security and error management
+    importFileAction() {
+        this.dialogService.open(ImportFileComponent, {
+           path: this.currentDirectory.path,
         });
     }
 }

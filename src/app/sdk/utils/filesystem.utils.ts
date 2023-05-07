@@ -1,11 +1,11 @@
-import { Directory, Filesystem, Resource } from "../../system/interfaces/core/filesystem";
+import { DirectoryNode, Filesystem, ResourceNode } from "../../system/interfaces/core/filesystem";
 
 export class FilesystemUtils {
-    static isDirectory(resource: Resource): boolean {
+    static isDirectory(resource: ResourceNode): boolean {
         return 'childs' in resource;
     }
 
-    static getPathAsArray(resource: Resource): Resource[] {
+    static getPathAsArray(resource: ResourceNode): ResourceNode[] {
         const path = [resource];
 
         while (resource.parent){
@@ -16,16 +16,16 @@ export class FilesystemUtils {
         return path;
     }
 
-    static restoreTree(directory: Directory) {
+    static restoreTree(directory: DirectoryNode) {
         for (const child of directory.childs) {
             child.parent = directory;
             if (this.isDirectory(child)) {
-                this.restoreTree(child as Directory);
+                this.restoreTree(child as DirectoryNode);
             }
         }
     }
 
-    static refreshDirectory(filesystem: Filesystem, directory: Directory): Directory {
+    static refreshDirectory(filesystem: Filesystem, directory: DirectoryNode): DirectoryNode {
         const path = directory.path.split('/');
         let selectedDirectory = filesystem.rootDirectory;
 

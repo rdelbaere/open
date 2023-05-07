@@ -1,0 +1,23 @@
+<form [formGroup]="fileForm" (ngSubmit)="import()">
+    <h2 mat-dialog-title>Importer un fichier</h2>
+
+    <mat-dialog-content>
+        <input type="file" formControlName="file" (change)="handleFile($event)">
+
+        <mat-form-field appearance="outline" color="accent">
+            <input matInput placeholder="Nom du fichier" formControlName="name" autocomplete="off">
+            <mat-error>
+                Vous devez saisir un nom
+            </mat-error>
+        </mat-form-field>
+
+        <p *ngIf="backendError" class="form-error">
+            {{ backendError.message }}
+        </p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center" [class.loader]="loading">
+        <button type="button" mat-button mat-dialog-close [disabled]="loading">Annuler</button>
+        <button mat-flat-button color="accent" [disabled]="loading">Importer</button>
+    </mat-dialog-actions>
+</form>

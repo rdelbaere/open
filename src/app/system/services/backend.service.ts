@@ -35,6 +35,15 @@ export class BackendService {
         return this.prepareObservable(observable);
     }
 
+    preloadFile(file: File) {
+        const request = this.prepareRequest('/tempfile');
+        const payload = new FormData();
+        payload.append('file', file);
+
+        const observable = this.http.post<BackendResponse>(request.url, payload, request.options);
+        return this.prepareObservable(observable);
+    }
+
     private prepareRequest(endpoint: string, options: BackendOptions = {}): BackendRequest {
         const resolvedOptions = this.resolveOptions(options);
 
